@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_prediccion_acciones_domain_Company" object="${company}" path="/companys" z="HAfrh7iXGloezi6HI/0WhSURX5E=">
+        <field:display field="title" id="s_com_prediccion_acciones_domain_Company_title" object="${company}" z="b6SdMjBNWymwJG2hUpDSoK1lG4w="/>
+        <field:display field="ticker" id="s_com_prediccion_acciones_domain_Company_ticker" object="${company}" z="96NQ+8OiX21UU6BtccAlcwS7MkM="/>
+        <field:display field="exchange" id="s_com_prediccion_acciones_domain_Company_exchange" object="${company}" z="l6bF1ZnnkthxnJyt9xfNYFmGWFI="/>
+        <field:display field="companyId" id="s_com_prediccion_acciones_domain_Company_companyId" object="${company}" z="veMfczwqJXqeZLdRkkCuieDDJpc="/>
+        <field:display field="localCurrencySymbol" id="s_com_prediccion_acciones_domain_Company_localCurrencySymbol" object="${company}" z="USqga15If7EJwXFs2RCWyAatxAs="/>
+        <field:display field="properties" id="s_com_prediccion_acciones_domain_Company_properties" object="${company}" z="8nOxW9ODrW0+E0QjAyqbIta+vnI="/>
+    </page:show>
+</div>

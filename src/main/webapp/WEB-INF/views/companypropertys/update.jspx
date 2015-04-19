@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:form="urn:jsptagdir:/WEB-INF/tags/form" xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <form:update id="fu_com_prediccion_acciones_domain_CompanyProperty" modelAttribute="companyProperty" path="/companypropertys" versionField="Version" z="nYsZW6V7g2oJbcpkjWkr1SFP25I=">
+        <field:input field="displayName" id="c_com_prediccion_acciones_domain_CompanyProperty_displayName" z="YYn7mmGFSlLPd0ogt8/9zlMIIdA="/>
+        <field:input field="propertyValue" id="c_com_prediccion_acciones_domain_CompanyProperty_propertyValue" z="KaMFurxQFlJ831BbxC5NK4pUvFs="/>
+        <field:input field="field" id="c_com_prediccion_acciones_domain_CompanyProperty_field" z="FFA8VKeFShWUQqE0tSrREQx7gW8="/>
+        <field:input field="propertyOrder" id="c_com_prediccion_acciones_domain_CompanyProperty_propertyOrder" z="+xQ4PgnxuCbS3v5ZiOLl4ApERHc="/>
+    </form:update>
+</div>

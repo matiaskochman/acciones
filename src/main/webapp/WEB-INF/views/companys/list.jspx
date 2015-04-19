@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" xmlns:table="urn:jsptagdir:/WEB-INF/tags/form/fields" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:list id="pl_com_prediccion_acciones_domain_Company" items="${companys}" z="Plz6WbcTR+4Z5Y88tXh4MoARnOc=">
+        <table:table data="${companys}" id="l_com_prediccion_acciones_domain_Company" path="/companys" z="muuMWiHrL1nq+2z1gb27YNCl+cY=">
+            <table:column id="c_com_prediccion_acciones_domain_Company_title" property="title" z="HNDGwwihYcKODsQT58lV0bDhwB0="/>
+            <table:column id="c_com_prediccion_acciones_domain_Company_ticker" property="ticker" z="rBqeu0beHJr6bTGl2fSTyIW6tIg="/>
+            <table:column id="c_com_prediccion_acciones_domain_Company_exchange" property="exchange" z="1/2ooKE0unMAyiak+YAnSheSVw4="/>
+            <table:column id="c_com_prediccion_acciones_domain_Company_companyId" property="companyId" z="WimM7OXXokDWj0QRc+SgCWwHfow="/>
+            <table:column id="c_com_prediccion_acciones_domain_Company_localCurrencySymbol" property="localCurrencySymbol" z="K2xgCqFkG9PJmwBiif0N6NBZvxw="/>
+            <table:column id="c_com_prediccion_acciones_domain_Company_properties" property="properties" z="B1SipRyeYZoIz9S+1mqLVMP68/o="/>
+        </table:table>
+    </page:list>
+</div>

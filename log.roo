@@ -1,0 +1,22 @@
+// Spring Roo 1.3.1.RELEASE [rev f4f5256] log opened at 2015-04-19 18:03:58
+project --topLevelPackage com.prediccion.acciones
+jpa setup --provider HIBERNATE --database HYPERSONIC_PERSISTENT
+entity jpa --class ~.domain.Company --testAutomatically 
+field string --fieldName title --notNull --unique
+field string --fieldName ticker --notNull --unique
+field string --fieldName exchange --notNull
+field string --fieldName companyId --unique
+field string --fieldName localCurrencySymbol
+entity jpa --class ~.domain.CompanyProperty
+field string --fieldName displayName
+field string --fieldName propertyValue
+field string --fieldName field
+field string --fieldName propertyOrder
+focus --class ~.domain.Company
+field list --type ~.domain.CompanyProperty --fieldName properties
+service all --interfacePackage com.prediccion.acciones.service
+web mvc setup
+json all
+web mvc all --package com.prediccion.acciones.controller
+exit
+// Spring Roo 1.3.1.RELEASE [rev f4f5256] log closed at 2015-04-19 18:07:12

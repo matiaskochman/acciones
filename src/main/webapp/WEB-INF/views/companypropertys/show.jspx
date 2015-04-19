@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<div xmlns:field="urn:jsptagdir:/WEB-INF/tags/form/fields" xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:page="urn:jsptagdir:/WEB-INF/tags/form" version="2.0">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <jsp:output omit-xml-declaration="yes"/>
+    <page:show id="ps_com_prediccion_acciones_domain_CompanyProperty" object="${companyproperty}" path="/companypropertys" z="VM9mkkntK3eWhZ+rjViUgO2XZik=">
+        <field:display field="displayName" id="s_com_prediccion_acciones_domain_CompanyProperty_displayName" object="${companyproperty}" z="brG/nC54zHNnaSUdRxNlExrj17Y="/>
+        <field:display field="propertyValue" id="s_com_prediccion_acciones_domain_CompanyProperty_propertyValue" object="${companyproperty}" z="43X0r83Gus6/zJ+MCBceagDEEp8="/>
+        <field:display field="field" id="s_com_prediccion_acciones_domain_CompanyProperty_field" object="${companyproperty}" z="tbA2LRTPKkq8PBjMUvvQTK63pq0="/>
+        <field:display field="propertyOrder" id="s_com_prediccion_acciones_domain_CompanyProperty_propertyOrder" object="${companyproperty}" z="RzIYLIjfLno4rbuyYgFmQnBOHHU="/>
+    </page:show>
+</div>

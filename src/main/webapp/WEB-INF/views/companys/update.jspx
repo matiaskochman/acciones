@@ -10,5 +10,8 @@
         <field:input field="localCurrencySymbol" id="c_com_prediccion_acciones_domain_Company_localCurrencySymbol" z="vJJNyxkntHGZZTESgLZ4solgXOs="/>
         <field:select field="properties" id="c_com_prediccion_acciones_domain_Company_properties" itemValue="id" items="${companypropertys}" multiple="true" path="/companypropertys" z="0fPPFHFdOgktsniTF8AHuAlcM74="/>
         <field:input field="market" id="c_com_prediccion_acciones_domain_Company_market" required="true" z="hE9wjHk2r8uyMG0atoBGyPvdUCM="/>
+        <field:input field="maxForecastValue" id="c_com_prediccion_acciones_domain_Company_maxForecastValue" validationMessageCode="field_invalid_number" z="V3aYsofy7xEEPdjYlZlou/SXUqw="/>
+        <field:input field="medForecastValue" id="c_com_prediccion_acciones_domain_Company_medForecastValue" validationMessageCode="field_invalid_number" z="hjUiatSZGUCa1Ifi4KiDfItshB0="/>
+        <field:input field="minForecastValue" id="c_com_prediccion_acciones_domain_Company_minForecastValue" validationMessageCode="field_invalid_number" z="uLafbFRcULgpZjQQQnNAgGXgDAQ="/>
     </form:update>
 </div>

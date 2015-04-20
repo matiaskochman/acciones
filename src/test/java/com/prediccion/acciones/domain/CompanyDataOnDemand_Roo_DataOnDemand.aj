@@ -33,6 +33,9 @@ privileged aspect CompanyDataOnDemand_Roo_DataOnDemand {
         setExchange(obj, index);
         setLocalCurrencySymbol(obj, index);
         setMarket(obj, index);
+        setMaxForecastValue(obj, index);
+        setMedForecastValue(obj, index);
+        setMinForecastValue(obj, index);
         setTicker(obj, index);
         setTitle(obj, index);
         return obj;
@@ -56,6 +59,21 @@ privileged aspect CompanyDataOnDemand_Roo_DataOnDemand {
     public void CompanyDataOnDemand.setMarket(Company obj, int index) {
         String market = "market_" + index;
         obj.setMarket(market);
+    }
+    
+    public void CompanyDataOnDemand.setMaxForecastValue(Company obj, int index) {
+        Double maxForecastValue = new Integer(index).doubleValue();
+        obj.setMaxForecastValue(maxForecastValue);
+    }
+    
+    public void CompanyDataOnDemand.setMedForecastValue(Company obj, int index) {
+        Double medForecastValue = new Integer(index).doubleValue();
+        obj.setMedForecastValue(medForecastValue);
+    }
+    
+    public void CompanyDataOnDemand.setMinForecastValue(Company obj, int index) {
+        Double minForecastValue = new Integer(index).doubleValue();
+        obj.setMinForecastValue(minForecastValue);
     }
     
     public void CompanyDataOnDemand.setTicker(Company obj, int index) {

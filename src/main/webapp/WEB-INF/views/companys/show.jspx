@@ -10,5 +10,8 @@
         <field:display field="localCurrencySymbol" id="s_com_prediccion_acciones_domain_Company_localCurrencySymbol" object="${company}" z="USqga15If7EJwXFs2RCWyAatxAs="/>
         <field:display field="properties" id="s_com_prediccion_acciones_domain_Company_properties" object="${company}" z="8nOxW9ODrW0+E0QjAyqbIta+vnI="/>
         <field:display field="market" id="s_com_prediccion_acciones_domain_Company_market" object="${company}" z="TbMTM20U/nZf2oJi00T9gsp8ieg="/>
+        <field:display field="maxForecastValue" id="s_com_prediccion_acciones_domain_Company_maxForecastValue" object="${company}" z="PaVYNS9rUNDkKlsfQoCy9OMhX+8="/>
+        <field:display field="medForecastValue" id="s_com_prediccion_acciones_domain_Company_medForecastValue" object="${company}" z="rg8BEfblN5xvHjnF6+WpbDi+hRk="/>
+        <field:display field="minForecastValue" id="s_com_prediccion_acciones_domain_Company_minForecastValue" object="${company}" z="nlYnaysnPDNRH3x02z/nz380lRQ="/>
     </page:show>
 </div>

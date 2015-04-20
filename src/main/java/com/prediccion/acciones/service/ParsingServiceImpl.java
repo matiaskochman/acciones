@@ -73,9 +73,9 @@ public class ParsingServiceImpl implements ParsingService{
 	public List<Company> getSocksFromGoogleFinance(){
 		
 		List<Company> companyList = null;
-		String maxNumEmpresas = "2000";
-		String price_change_52week_from = "20";
-		String marketCap_from = "10000000";
+		String maxNumEmpresas = "8000";
+		String price_change_52week_from = "-50";
+		String marketCap_from = "1000000";
 		String nasdaq = "exchange%20%3D%3D%20%22NASDAQ%22%29%29%20%26%20%28";
 		String nysemkt = "exchange%20%3D%3D%20%22NYSEMKT%22%29%20%7C%20%28";
 		String nyse = "exchange%20%3D%3D%20%22NYSE%22%29%20%7C%20%28"; 
@@ -136,8 +136,69 @@ public class ParsingServiceImpl implements ParsingService{
 	
 	
 	
+	
+	
 }
+class Equity implements Comparable<Equity>{
+	String symbol;
+	String market;
+	String description;
+	Double maxForecastValue;
+	Double medForecastValue;
+	Double minForecastValue;
+	
+	public Equity(String symbol,String market){
+		this.symbol=symbol;
+		this.market=market;
+	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((market == null) ? 0 : market.hashCode());
+		result = prime * result + ((symbol == null) ? 0 : symbol.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Equity other = (Equity) obj;
+		if (market == null) {
+			if (other.market != null)
+				return false;
+		} else if (!market.equals(other.market))
+			return false;
+		if (symbol == null) {
+			if (other.symbol != null)
+				return false;
+		} else if (!symbol.equals(other.symbol))
+			return false;
+		return true;
+	}
+
+	@Override
+	public int compareTo(Equity o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String toString() {
+		return "Equity [symbol=" + symbol + ", market=" + market
+				+ ", description=" + description + ", maxForecastValue="
+				+ maxForecastValue + ", medForecastValue=" + medForecastValue
+				+ ", minForecastValue=" + minForecastValue + "]";
+	}
+	
+	
+}
 
 class CompanyJson {
 	

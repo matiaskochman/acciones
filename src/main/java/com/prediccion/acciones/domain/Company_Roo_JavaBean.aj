@@ -25,6 +25,30 @@ privileged aspect Company_Roo_JavaBean {
         this.ticker = ticker;
     }
     
+    public Double Company.getMaxForecastValue() {
+        return this.maxForecastValue;
+    }
+    
+    public void Company.setMaxForecastValue(Double maxForecastValue) {
+        this.maxForecastValue = maxForecastValue;
+    }
+    
+    public Double Company.getMedForecastValue() {
+        return this.medForecastValue;
+    }
+    
+    public void Company.setMedForecastValue(Double medForecastValue) {
+        this.medForecastValue = medForecastValue;
+    }
+    
+    public Double Company.getMinForecastValue() {
+        return this.minForecastValue;
+    }
+    
+    public void Company.setMinForecastValue(Double minForecastValue) {
+        this.minForecastValue = minForecastValue;
+    }
+    
     public String Company.getExchange() {
         return this.exchange;
     }

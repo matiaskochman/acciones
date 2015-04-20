@@ -19,5 +19,8 @@ public class ParsingServiceTest extends AbstractJUnit4SpringContextTests{
     public void test(){
     	List<Company> list = parsingService.getSocksFromGoogleFinance();
     	list.size();
+    	
+    	System.out.println(list);
     }
+    
 }

@@ -47,6 +47,13 @@ public class Company {
     @Column(unique = true)
     private String ticker;
 
+    @Column
+    private Double maxForecastValue;
+    @Column
+    private Double medForecastValue;
+    @Column
+    private Double minForecastValue;
+    
     /**
      */
     @NotNull
@@ -80,4 +87,43 @@ public class Company {
     		this.market = "PAR";
     	}
     }
+
+	@Override
+	public String toString() {
+		return "Company [ticker=" + ticker + ":" + market + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((exchange == null) ? 0 : exchange.hashCode());
+		result = prime * result + ((ticker == null) ? 0 : ticker.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Company other = (Company) obj;
+		if (exchange == null) {
+			if (other.exchange != null)
+				return false;
+		} else if (!exchange.equals(other.exchange))
+			return false;
+		if (ticker == null) {
+			if (other.ticker != null)
+				return false;
+		} else if (!ticker.equals(other.ticker))
+			return false;
+		return true;
+	}
+    
+    
 }

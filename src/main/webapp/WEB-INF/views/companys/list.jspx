@@ -7,9 +7,9 @@
             <table:column id="c_com_prediccion_acciones_domain_Company_title" property="title" z="HNDGwwihYcKODsQT58lV0bDhwB0="/>
             <table:column id="c_com_prediccion_acciones_domain_Company_ticker" property="ticker" z="rBqeu0beHJr6bTGl2fSTyIW6tIg="/>
             <table:column id="c_com_prediccion_acciones_domain_Company_exchange" property="exchange" z="1/2ooKE0unMAyiak+YAnSheSVw4="/>
-            <table:column id="c_com_prediccion_acciones_domain_Company_companyId" property="companyId" z="WimM7OXXokDWj0QRc+SgCWwHfow="/>
-            <table:column id="c_com_prediccion_acciones_domain_Company_localCurrencySymbol" property="localCurrencySymbol" z="K2xgCqFkG9PJmwBiif0N6NBZvxw="/>
-            <table:column id="c_com_prediccion_acciones_domain_Company_market" property="market" z="q/r0vdINBUaaeJQleIL47Wo58Eo="/>
+            <table:column id="c_com_prediccion_acciones_domain_Company_maxForecastValue" property="maxForecastValue" z="G2ebTht9wgTvxTqLCC7cSTrsTnw="/>
+            <table:column id="c_com_prediccion_acciones_domain_Company_medForecastValue" property="medForecastValue" z="83xDFd2PuvsnQuS3Oun8HebnWnE="/>
+            <table:column id="c_com_prediccion_acciones_domain_Company_minForecastValue" property="minForecastValue" z="2e3uETinQ/ZSvysDF34GHCOYidQ="/>
         </table:table>
     </page:list>
 </div>

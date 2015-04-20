@@ -13,33 +13,27 @@ import java.util.List;
 privileged aspect Company_Roo_Json {
     
     public String Company.toJson() {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(this);
+        return new JSONSerializer().exclude("*.class").serialize(this);
     }
     
     public String Company.toJson(String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(this);
+        return new JSONSerializer().include(fields).exclude("*.class").serialize(this);
     }
     
     public static Company Company.fromJsonToCompany(String json) {
-        return new JSONDeserializer<Company>()
-        .use(null, Company.class).deserialize(json);
+        return new JSONDeserializer<Company>().use(null, Company.class).deserialize(json);
     }
     
     public static String Company.toJsonArray(Collection<Company> collection) {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(collection);
+        return new JSONSerializer().exclude("*.class").serialize(collection);
     }
     
     public static String Company.toJsonArray(Collection<Company> collection, String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(collection);
+        return new JSONSerializer().include(fields).exclude("*.class").serialize(collection);
     }
     
     public static Collection<Company> Company.fromJsonArrayToCompanys(String json) {
-        return new JSONDeserializer<List<Company>>()
-        .use("values", Company.class).deserialize(json);
+        return new JSONDeserializer<List<Company>>().use(null, ArrayList.class).use("values", Company.class).deserialize(json);
     }
     
 }

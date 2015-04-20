@@ -33,6 +33,10 @@ privileged aspect Company_Roo_JavaBean {
         this.exchange = exchange;
     }
     
+    public String Company.getMarket() {
+        return this.market;
+    }
+    
     public String Company.getCompanyId() {
         return this.companyId;
     }

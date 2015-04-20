@@ -13,33 +13,27 @@ import java.util.List;
 privileged aspect CompanyProperty_Roo_Json {
     
     public String CompanyProperty.toJson() {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(this);
+        return new JSONSerializer().exclude("*.class").serialize(this);
     }
     
     public String CompanyProperty.toJson(String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(this);
+        return new JSONSerializer().include(fields).exclude("*.class").serialize(this);
     }
     
     public static CompanyProperty CompanyProperty.fromJsonToCompanyProperty(String json) {
-        return new JSONDeserializer<CompanyProperty>()
-        .use(null, CompanyProperty.class).deserialize(json);
+        return new JSONDeserializer<CompanyProperty>().use(null, CompanyProperty.class).deserialize(json);
     }
     
     public static String CompanyProperty.toJsonArray(Collection<CompanyProperty> collection) {
-        return new JSONSerializer()
-        .exclude("*.class").serialize(collection);
+        return new JSONSerializer().exclude("*.class").serialize(collection);
     }
     
     public static String CompanyProperty.toJsonArray(Collection<CompanyProperty> collection, String[] fields) {
-        return new JSONSerializer()
-        .include(fields).exclude("*.class").serialize(collection);
+        return new JSONSerializer().include(fields).exclude("*.class").serialize(collection);
     }
     
     public static Collection<CompanyProperty> CompanyProperty.fromJsonArrayToCompanyPropertys(String json) {
-        return new JSONDeserializer<List<CompanyProperty>>()
-        .use("values", CompanyProperty.class).deserialize(json);
+        return new JSONDeserializer<List<CompanyProperty>>().use(null, ArrayList.class).use("values", CompanyProperty.class).deserialize(json);
     }
     
 }

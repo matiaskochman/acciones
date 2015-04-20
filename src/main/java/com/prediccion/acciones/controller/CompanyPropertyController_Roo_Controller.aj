@@ -49,15 +49,15 @@ privileged aspect CompanyPropertyController_Roo_Controller {
     }
     
     @RequestMapping(produces = "text/html")
-    public String CompanyPropertyController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, @RequestParam(value = "sortFieldName", required = false) String sortFieldName, @RequestParam(value = "sortOrder", required = false) String sortOrder, Model uiModel) {
+    public String CompanyPropertyController.list(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "size", required = false) Integer size, Model uiModel) {
         if (page != null || size != null) {
             int sizeNo = size == null ? 10 : size.intValue();
             final int firstResult = page == null ? 0 : (page.intValue() - 1) * sizeNo;
-            uiModel.addAttribute("companypropertys", CompanyProperty.findCompanyPropertyEntries(firstResult, sizeNo, sortFieldName, sortOrder));
+            uiModel.addAttribute("companypropertys", companyPropertyService.findCompanyPropertyEntries(firstResult, sizeNo));
             float nrOfPages = (float) companyPropertyService.countAllCompanyPropertys() / sizeNo;
             uiModel.addAttribute("maxPages", (int) ((nrOfPages > (int) nrOfPages || nrOfPages == 0.0) ? nrOfPages + 1 : nrOfPages));
         } else {
-            uiModel.addAttribute("companypropertys", CompanyProperty.findAllCompanyPropertys(sortFieldName, sortOrder));
+            uiModel.addAttribute("companypropertys", companyPropertyService.findAllCompanyPropertys());
         }
         return "companypropertys/list";
     }

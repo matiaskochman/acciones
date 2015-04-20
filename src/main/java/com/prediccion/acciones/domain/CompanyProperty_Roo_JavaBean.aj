@@ -15,11 +15,11 @@ privileged aspect CompanyProperty_Roo_JavaBean {
         this.displayName = displayName;
     }
     
-    public String CompanyProperty.getPropertyValue() {
+    public Double CompanyProperty.getPropertyValue() {
         return this.propertyValue;
     }
     
-    public void CompanyProperty.setPropertyValue(String propertyValue) {
+    public void CompanyProperty.setPropertyValue(Double propertyValue) {
         this.propertyValue = propertyValue;
     }
     

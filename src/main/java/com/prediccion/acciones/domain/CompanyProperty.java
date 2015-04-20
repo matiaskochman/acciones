@@ -16,7 +16,7 @@ public class CompanyProperty {
 
     /**
      */
-    private String propertyValue;
+    private Double propertyValue;
 
     /**
      */

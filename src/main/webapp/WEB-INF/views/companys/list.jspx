@@ -9,7 +9,7 @@
             <table:column id="c_com_prediccion_acciones_domain_Company_exchange" property="exchange" z="1/2ooKE0unMAyiak+YAnSheSVw4="/>
             <table:column id="c_com_prediccion_acciones_domain_Company_companyId" property="companyId" z="WimM7OXXokDWj0QRc+SgCWwHfow="/>
             <table:column id="c_com_prediccion_acciones_domain_Company_localCurrencySymbol" property="localCurrencySymbol" z="K2xgCqFkG9PJmwBiif0N6NBZvxw="/>
-            <table:column id="c_com_prediccion_acciones_domain_Company_properties" property="properties" z="B1SipRyeYZoIz9S+1mqLVMP68/o="/>
+            <table:column id="c_com_prediccion_acciones_domain_Company_market" property="market" z="q/r0vdINBUaaeJQleIL47Wo58Eo="/>
         </table:table>
     </page:list>
 </div>

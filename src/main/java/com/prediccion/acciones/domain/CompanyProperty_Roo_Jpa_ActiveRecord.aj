@@ -14,8 +14,6 @@ privileged aspect CompanyProperty_Roo_Jpa_ActiveRecord {
     @PersistenceContext
     transient EntityManager CompanyProperty.entityManager;
     
-    public static final List<String> CompanyProperty.fieldNames4OrderClauseFilter = java.util.Arrays.asList("displayName", "propertyValue", "field", "propertyOrder");
-    
     public static final EntityManager CompanyProperty.entityManager() {
         EntityManager em = new CompanyProperty().entityManager;
         if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
@@ -30,17 +28,6 @@ privileged aspect CompanyProperty_Roo_Jpa_ActiveRecord {
         return entityManager().createQuery("SELECT o FROM CompanyProperty o", CompanyProperty.class).getResultList();
     }
     
-    public static List<CompanyProperty> CompanyProperty.findAllCompanyPropertys(String sortFieldName, String sortOrder) {
-        String jpaQuery = "SELECT o FROM CompanyProperty o";
-        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
-            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
-            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
-                jpaQuery = jpaQuery + " " + sortOrder;
-            }
-        }
-        return entityManager().createQuery(jpaQuery, CompanyProperty.class).getResultList();
-    }
-    
     public static CompanyProperty CompanyProperty.findCompanyProperty(Long id) {
         if (id == null) return null;
         return entityManager().find(CompanyProperty.class, id);
@@ -48,17 +35,6 @@ privileged aspect CompanyProperty_Roo_Jpa_ActiveRecord {
     
     public static List<CompanyProperty> CompanyProperty.findCompanyPropertyEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM CompanyProperty o", CompanyProperty.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
-    }
-    
-    public static List<CompanyProperty> CompanyProperty.findCompanyPropertyEntries(int firstResult, int maxResults, String sortFieldName, String sortOrder) {
-        String jpaQuery = "SELECT o FROM CompanyProperty o";
-        if (fieldNames4OrderClauseFilter.contains(sortFieldName)) {
-            jpaQuery = jpaQuery + " ORDER BY " + sortFieldName;
-            if ("ASC".equalsIgnoreCase(sortOrder) || "DESC".equalsIgnoreCase(sortOrder)) {
-                jpaQuery = jpaQuery + " " + sortOrder;
-            }
-        }
-        return entityManager().createQuery(jpaQuery, CompanyProperty.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
     
     @Transactional

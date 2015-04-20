@@ -4,7 +4,7 @@
     <jsp:output omit-xml-declaration="yes"/>
     <form:create id="fc_com_prediccion_acciones_domain_CompanyProperty" modelAttribute="companyProperty" path="/companypropertys" render="${empty dependencies}" z="q6l34LOPzI0NNYZ+O3/NE7dgdFk=">
         <field:input field="displayName" id="c_com_prediccion_acciones_domain_CompanyProperty_displayName" z="YYn7mmGFSlLPd0ogt8/9zlMIIdA="/>
-        <field:input field="propertyValue" id="c_com_prediccion_acciones_domain_CompanyProperty_propertyValue" z="KaMFurxQFlJ831BbxC5NK4pUvFs="/>
+        <field:input field="propertyValue" id="c_com_prediccion_acciones_domain_CompanyProperty_propertyValue" validationMessageCode="field_invalid_number" z="fdRJ0lNaYIHOLGAquZZ4rrBF5Xw="/>
         <field:input field="field" id="c_com_prediccion_acciones_domain_CompanyProperty_field" z="FFA8VKeFShWUQqE0tSrREQx7gW8="/>
         <field:input field="propertyOrder" id="c_com_prediccion_acciones_domain_CompanyProperty_propertyOrder" z="+xQ4PgnxuCbS3v5ZiOLl4ApERHc="/>
     </form:create>

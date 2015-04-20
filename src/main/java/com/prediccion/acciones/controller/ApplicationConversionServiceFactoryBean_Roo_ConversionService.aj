@@ -26,7 +26,7 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     public Converter<Company, String> ApplicationConversionServiceFactoryBean.getCompanyToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.prediccion.acciones.domain.Company, java.lang.String>() {
             public String convert(Company company) {
-                return new StringBuilder().append(company.getTitle()).append(' ').append(company.getTicker()).append(' ').append(company.getExchange()).append(' ').append(company.getCompanyId()).toString();
+                return new StringBuilder().append(company.getTitle()).append(' ').append(company.getTicker()).append(' ').append(company.getExchange()).append(' ').append(company.getMarket()).toString();
             }
         };
     }

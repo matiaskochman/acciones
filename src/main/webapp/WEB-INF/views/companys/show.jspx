@@ -9,5 +9,6 @@
         <field:display field="companyId" id="s_com_prediccion_acciones_domain_Company_companyId" object="${company}" z="veMfczwqJXqeZLdRkkCuieDDJpc="/>
         <field:display field="localCurrencySymbol" id="s_com_prediccion_acciones_domain_Company_localCurrencySymbol" object="${company}" z="USqga15If7EJwXFs2RCWyAatxAs="/>
         <field:display field="properties" id="s_com_prediccion_acciones_domain_Company_properties" object="${company}" z="8nOxW9ODrW0+E0QjAyqbIta+vnI="/>
+        <field:display field="market" id="s_com_prediccion_acciones_domain_Company_market" object="${company}" z="TbMTM20U/nZf2oJi00T9gsp8ieg="/>
     </page:show>
 </div>

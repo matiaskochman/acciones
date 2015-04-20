@@ -24,6 +24,10 @@ privileged aspect Company_Roo_Jpa_Entity {
     @Column(name = "version")
     private Integer Company.version;
     
+    public Company.new() {
+        super();
+    }
+
     public Long Company.getId() {
         return this.id;
     }

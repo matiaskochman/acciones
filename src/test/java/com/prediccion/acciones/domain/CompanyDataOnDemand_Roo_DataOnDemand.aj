@@ -32,6 +32,7 @@ privileged aspect CompanyDataOnDemand_Roo_DataOnDemand {
         setCompanyId(obj, index);
         setExchange(obj, index);
         setLocalCurrencySymbol(obj, index);
+        setMarket(obj, index);
         setTicker(obj, index);
         setTitle(obj, index);
         return obj;
@@ -50,6 +51,11 @@ privileged aspect CompanyDataOnDemand_Roo_DataOnDemand {
     public void CompanyDataOnDemand.setLocalCurrencySymbol(Company obj, int index) {
         String localCurrencySymbol = "localCurrencySymbol_" + index;
         obj.setLocalCurrencySymbol(localCurrencySymbol);
+    }
+    
+    public void CompanyDataOnDemand.setMarket(Company obj, int index) {
+        String market = "market_" + index;
+        obj.setMarket(market);
     }
     
     public void CompanyDataOnDemand.setTicker(Company obj, int index) {

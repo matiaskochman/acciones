@@ -10,21 +10,24 @@ import com.prediccion.acciones.domain.Company;
 import com.prediccion.acciones.utils.HttpConectionUtils;
 
 public class Processor implements Runnable{
+	
+	Integer CONCURRENT_THREADS = 200;
+	
 	CountDownLatch countDownLatch;
 	Company company;
 	String data;
-	Pattern p = Pattern.compile("-*\\d+(.)\\d*\\s*%");
-	TreeSet<Company> treeSet_min;
+	Pattern financial_times_pattern = Pattern.compile("-*\\d+(.)\\d*\\s*%");
+	TreeSet<Company> treeSet;
 
-	public Processor(CountDownLatch countDownLatch,Company company,TreeSet<Company> treeSet_min) {
+	public Processor(CountDownLatch countDownLatch,Company company,TreeSet<Company> set) {
 		super();
 		this.company=company;
 		this.countDownLatch = countDownLatch;
-		this.treeSet_min = treeSet_min;
+		this.treeSet = set;
 	}
 
 	private void extractFromYqlResult() throws Exception {
-		Matcher m = p.matcher(data);
+		Matcher m = financial_times_pattern.matcher(data);
 		 int start1 = 0;
 		 int start2 = 0;
 		 int start3 = 0;
@@ -83,7 +86,10 @@ public class Processor implements Runnable{
 				 if(company.getMaxForecastValue().equals(company.getMinForecastValue())&&company.getMaxForecastValue().equals(company.getMedForecastValue())){
 					throw new Exception("3 values are equal"); 
 				 }
+				 
+				 treeSet.add(company);
 			 }
+			 
 			 
 		 }
 	}
@@ -103,7 +109,7 @@ public class Processor implements Runnable{
 			
 			 extractFromYqlResult();
 			 
-			 treeSet_min.add(company);
+			 //treeSet_min.add(company);
 			
 			System.out.println("equity symbol: "+company.getTicker()+":"+company.getMarket()+"   "+data);
 			

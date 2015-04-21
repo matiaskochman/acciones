@@ -1,7 +1,13 @@
 package com.prediccion.acciones.service;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,13 +18,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.google.gson.Gson;
 import com.prediccion.acciones.domain.Company;
 import com.prediccion.acciones.domain.CompanyProperty;
+import com.prediccion.acciones.process.Processor;
 import com.prediccion.acciones.utils.HttpConectionUtils;
 
 @Service
 @Transactional
 public class ParsingServiceImpl implements ParsingService{
 
-	
+	int CONCURRENT_THREADS = 100;
 	public void loviejo(){
 		/*
 		String baseUrl = "http://query.yahooapis.com/v1/public/yql?q=";
@@ -70,7 +77,7 @@ public class ParsingServiceImpl implements ParsingService{
 		return list;
 	}
 	
-	public List<Company> getSocksFromGoogleFinance(){
+	public Set<Company> getSocksFromGoogleFinance(){
 		
 		List<Company> companyList = null;
 		String maxNumEmpresas = "8000";
@@ -102,6 +109,14 @@ public class ParsingServiceImpl implements ParsingService{
 						"&sortas=MarketCap";
 		
 		String result="";
+		Comparator<Company> minComparator = new Comparator<Company>(){
+			@Override
+			public int compare(Company o1, Company o2) {
+				int min = o1.getMinForecastValue().compareTo(o2.getMinForecastValue());
+				return min*(-1);
+			}
+		};		    
+		TreeSet<Company> resultSet = new TreeSet<Company>(minComparator);
 
 		try {
 			
@@ -126,12 +141,32 @@ public class ParsingServiceImpl implements ParsingService{
 			
 		    companyList = createCompanies(companyArray);
 		    
+		    
+			CountDownLatch countDownLatch=new CountDownLatch(companyList.size());
+			
+			ExecutorService executorService=Executors.newFixedThreadPool(CONCURRENT_THREADS);
+			
+			for (Company company : companyList) {
+				executorService.submit(new Processor(countDownLatch,company,resultSet));
+			}
+			
+			try {
+				countDownLatch.await();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			executorService.shutdown();
+			
+			
+		    
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return companyList;
+		return resultSet;
 	}
 	
 	

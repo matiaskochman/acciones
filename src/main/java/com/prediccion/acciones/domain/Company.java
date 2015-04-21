@@ -88,10 +88,15 @@ public class Company {
     	}
     }
 
+
 	@Override
 	public String toString() {
-		return "Company [ticker=" + ticker + ":" + market + "]";
+		return "Company [ticker=" + ticker + ", maxForecastValue="
+				+ maxForecastValue + ", medForecastValue=" + medForecastValue
+				+ ", minForecastValue=" + minForecastValue + ", market="
+				+ market + "]";
 	}
+
 
 	@Override
 	public int hashCode() {

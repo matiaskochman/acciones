@@ -1,6 +1,6 @@
 package com.prediccion.acciones.service;
 
-import java.util.List;
+import java.util.Set;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +17,12 @@ public class ParsingServiceTest extends AbstractJUnit4SpringContextTests{
 
     @Test
     public void test(){
-    	List<Company> list = parsingService.getSocksFromGoogleFinance();
-    	list.size();
+    	Set<Company> list = parsingService.getSocksFromGoogleFinance();
     	
-    	System.out.println(list);
+    	for (Company company : list) {
+			System.out.println(company);
+		}
+    	
     }
     
 }

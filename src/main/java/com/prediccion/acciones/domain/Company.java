@@ -91,10 +91,10 @@ public class Company {
 
 	@Override
 	public String toString() {
-		return "Company [ticker=" + ticker + ", maxForecastValue="
+		return "Company [ticker=" + ticker + ", market="
+				+ market + "]"+ ", maxForecastValue="
 				+ maxForecastValue + ", medForecastValue=" + medForecastValue
-				+ ", minForecastValue=" + minForecastValue + ", market="
-				+ market + "]";
+				+ ", minForecastValue=" + minForecastValue +", title=    "+title;
 	}
 
 

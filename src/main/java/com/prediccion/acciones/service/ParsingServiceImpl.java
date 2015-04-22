@@ -80,8 +80,8 @@ public class ParsingServiceImpl implements ParsingService{
 	public Set<Company> getSocksFromGoogleFinance(){
 		
 		List<Company> companyList = null;
-		String maxNumEmpresas = "8000";
-		String price_change_52week_from = "-50";
+		String maxNumEmpresas = "4000";
+		String price_change_52week_from = "50";
 		String marketCap_from = "1000000";
 		String nasdaq = "exchange%20%3D%3D%20%22NASDAQ%22%29%29%20%26%20%28";
 		String nysemkt = "exchange%20%3D%3D%20%22NYSEMKT%22%29%20%7C%20%28";
@@ -94,8 +94,13 @@ public class ParsingServiceImpl implements ParsingService{
 		
 		String query = "http://www.google.com/finance?"+
 						"output=json&start=0&num="+maxNumEmpresas+"&noIL=1&q=["+
-						//currency+
-						london+
+						currency+
+						otcmkt+
+						tcbb+
+						nysemkt+
+						nyseArca+
+						nyse+
+						nasdaq+
 						"market_cap%20%3E%3D%20"+marketCap_from+"%29%20%26%20%28"+
 						"market_cap%20%3C%3D%20726640000000%29%20%26%20%28"+
 						"pe_ratio%20%3E%3D%2010%29%20%26%20%28"+

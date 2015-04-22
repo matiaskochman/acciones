@@ -17,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.google.gson.Gson;
 import com.prediccion.acciones.domain.Company;
-import com.prediccion.acciones.domain.CompanyProperty;
 import com.prediccion.acciones.process.Processor;
 import com.prediccion.acciones.utils.HttpConectionUtils;
 
@@ -43,32 +42,54 @@ public class ParsingServiceImpl implements ParsingService{
 		
 		Company company = null;
 		for (CompanyJson c : companyArray) {
-			company = new Company(c.title, c.ticker, c.exchange, c.id, c.local_currency_symbol, new ArrayList<CompanyProperty>());
-			CompanyProperty property = null;
+			//company = new Company(c.title, c.ticker, c.exchange, c.id, c.local_currency_symbol, new ArrayList<CompanyProperty>());
+			
+			company = new Company();
+			
+			company.setTitle(c.title);
+			company.setTicker(c.ticker);
+			company.setExchange(c.exchange);
+			company.setCompanyId(c.id);
+			company.setLocalCurrencySymbol(c.local_currency_symbol);
+			
+			//CompanyProperty property = null;
 			for (ColumnJson col : c.columns) {
-				property = new CompanyProperty();
+				//property = new CompanyProperty();
 
 				try{
 					if(StringUtils.isEmpty(col.field)||StringUtils.isEmpty(col.value)){
 						throw new Exception();
 					}else{
+						
+						if(col.field.equalsIgnoreCase("MarketCap")){
+							if(col.value.contains("B")){
+								int i = col.value.indexOf("B");
+								String sub1 = col.value.substring(0,i);
+								Double val = Double.valueOf(sub1)*1000000000D;
+								col.value = val.toString();
+							}
+							company.setMarketCap(Double.valueOf(col.value));
+						}else if(col.field.equalsIgnoreCase("PE")){
+							company.setPe(Double.valueOf(col.value));
+							
+						}else if(col.field.equalsIgnoreCase("Price52WeekPercChange")){
+							company.setPrice52WeekPercChange(Double.valueOf(col.value));
+							
+						}
+						/*
 						property.setDisplayName(col.display_name);
 						property.setField(col.field);
 						
-						if(col.value.contains("B")){
-							int i = col.value.indexOf("B");
-							String sub1 = col.value.substring(0,i);
-							Double val = Double.valueOf(sub1)*1000000000D;
-							col.value = val.toString();
-						}
 						property.setPropertyValue(Double.valueOf(col.value));
 						property.setPropertyOrder(col.sort_order);
+						*/
 					}
-					company.getProperties().add(property);
+					//company.getProperties().add(property);
 					
 				}catch(NumberFormatException e){
 					System.out.println("numberFormatException property skipped");
 				}catch(Exception e){
+					e.printStackTrace();
 					System.out.println("field or value empty property skipped");
 				}
 			}
@@ -79,9 +100,13 @@ public class ParsingServiceImpl implements ParsingService{
 	
 	public Set<Company> getSocksFromGoogleFinance(){
 		
+		
+		String s = "https://www.google.com/finance?output=json&start=0&num=1500&noIL=1&q=[%28exchange%20%3D%3D%20%22EPA%22%29%20%26%20%28market_cap%20%3E%3D%200%29%20%26%20%28market_cap%20%3C%3D%20127180000000%29%20%26%20%28pe_ratio%20%3E%3D%200%29%20%26%20%28pe_ratio%20%3C%3D%2010098%29%20%26%20%28dividend_yield%20%3E%3D%200%29%20%26%20%28dividend_yield%20%3C%3D%20171%29%20%26%20%28price_change_52week%20%3E%3D%20-84%29%20%26%20%28price_change_52week%20%3C%3D%201010%29]&restype=company&ei=jfs2VZHuH-zwsQfMhoCAAw&sortas=MarketCap";
+		
+		
 		List<Company> companyList = null;
-		String maxNumEmpresas = "4000";
-		String price_change_52week_from = "50";
+		String maxNumEmpresas = "400";
+		String price_change_52week_from = "10";
 		String marketCap_from = "1000000";
 		String nasdaq = "exchange%20%3D%3D%20%22NASDAQ%22%29%29%20%26%20%28";
 		String nysemkt = "exchange%20%3D%3D%20%22NYSEMKT%22%29%20%7C%20%28";
@@ -129,6 +154,8 @@ public class ParsingServiceImpl implements ParsingService{
 			Pattern p_european = Pattern.compile("\\[\\{\"title\"+[\\x00-\\x7F|€|£]+(?=\\,\\\"mf_searchresults)");
 			
 			result = HttpConectionUtils.getData(query);
+			//result = HttpConectionUtils.getData(s);
+			
 			System.out.println(result);
 			Matcher m = p_european.matcher(result);
 

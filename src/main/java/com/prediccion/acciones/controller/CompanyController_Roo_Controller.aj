@@ -5,7 +5,6 @@ package com.prediccion.acciones.controller;
 
 import com.prediccion.acciones.controller.CompanyController;
 import com.prediccion.acciones.domain.Company;
-import com.prediccion.acciones.service.CompanyPropertyService;
 import com.prediccion.acciones.service.CompanyService;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
@@ -24,9 +23,6 @@ privileged aspect CompanyController_Roo_Controller {
     
     @Autowired
     CompanyService CompanyController.companyService;
-    
-    @Autowired
-    CompanyPropertyService CompanyController.companyPropertyService;
     
     @RequestMapping(method = RequestMethod.POST, produces = "text/html")
     public String CompanyController.create(@Valid Company company, BindingResult bindingResult, Model uiModel, HttpServletRequest httpServletRequest) {
@@ -47,6 +43,7 @@ privileged aspect CompanyController_Roo_Controller {
     
     @RequestMapping(value = "/{id}", produces = "text/html")
     public String CompanyController.show(@PathVariable("id") Long id, Model uiModel) {
+        addDateTimeFormatPatterns(uiModel);
         uiModel.addAttribute("company", companyService.findCompany(id));
         uiModel.addAttribute("itemId", id);
         return "companys/show";
@@ -63,6 +60,7 @@ privileged aspect CompanyController_Roo_Controller {
         } else {
             uiModel.addAttribute("companys", companyService.findAllCompanys());
         }
+        addDateTimeFormatPatterns(uiModel);
         return "companys/list";
     }
     
@@ -93,9 +91,13 @@ privileged aspect CompanyController_Roo_Controller {
         return "redirect:/companys";
     }
     
+    void CompanyController.addDateTimeFormatPatterns(Model uiModel) {
+        uiModel.addAttribute("company_fechacreacion_date_format", "dd/MM/yyyy");
+    }
+    
     void CompanyController.populateEditForm(Model uiModel, Company company) {
         uiModel.addAttribute("company", company);
-        uiModel.addAttribute("companypropertys", companyPropertyService.findAllCompanyPropertys());
+        addDateTimeFormatPatterns(uiModel);
     }
     
     String CompanyController.encodeUrlPathSegment(String pathSegment, HttpServletRequest httpServletRequest) {

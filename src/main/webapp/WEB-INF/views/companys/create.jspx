@@ -8,11 +8,14 @@
         <field:input field="exchange" id="c_com_prediccion_acciones_domain_Company_exchange" required="true" z="POXxa1t/6GuKPyDEqWTXkosKCdg="/>
         <field:input field="companyId" id="c_com_prediccion_acciones_domain_Company_companyId" z="iuVSUkLyjY/bkFTCSDGqK7F34zA="/>
         <field:input field="localCurrencySymbol" id="c_com_prediccion_acciones_domain_Company_localCurrencySymbol" z="vJJNyxkntHGZZTESgLZ4solgXOs="/>
-        <field:select field="properties" id="c_com_prediccion_acciones_domain_Company_properties" itemValue="id" items="${companypropertys}" multiple="true" path="/companypropertys" z="0fPPFHFdOgktsniTF8AHuAlcM74="/>
         <field:input field="market" id="c_com_prediccion_acciones_domain_Company_market" required="true" z="hE9wjHk2r8uyMG0atoBGyPvdUCM="/>
         <field:input field="maxForecastValue" id="c_com_prediccion_acciones_domain_Company_maxForecastValue" validationMessageCode="field_invalid_number" z="V3aYsofy7xEEPdjYlZlou/SXUqw="/>
         <field:input field="medForecastValue" id="c_com_prediccion_acciones_domain_Company_medForecastValue" validationMessageCode="field_invalid_number" z="hjUiatSZGUCa1Ifi4KiDfItshB0="/>
         <field:input field="minForecastValue" id="c_com_prediccion_acciones_domain_Company_minForecastValue" validationMessageCode="field_invalid_number" z="uLafbFRcULgpZjQQQnNAgGXgDAQ="/>
+        <field:input field="marketCap" id="c_com_prediccion_acciones_domain_Company_marketCap" validationMessageCode="field_invalid_number" z="TfMXTfjLTCwXE3dGcE4d4WEq5pQ="/>
+        <field:input field="pe" id="c_com_prediccion_acciones_domain_Company_pe" validationMessageCode="field_invalid_number" z="9Fx3clvYDaNe/N63/OF6cu0kYEw="/>
+        <field:input field="price52WeekPercChange" id="c_com_prediccion_acciones_domain_Company_price52WeekPercChange" validationMessageCode="field_invalid_number" z="DuchbrZ8hT+XGPT8BfXLoyxDxO8="/>
+        <field:datetime dateTimePattern="${company_fechacreacion_date_format}" field="fechaCreacion" id="c_com_prediccion_acciones_domain_Company_fechaCreacion" z="D9b3lyVnKMjUyB125S2CXY8gkNE="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_prediccion_acciones_domain_Company" render="${not empty dependencies}" z="1HM9kqb281OwQccFw0Qo49aZxL4="/>
 </div>

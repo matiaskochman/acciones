@@ -3,15 +3,13 @@
 
 package com.prediccion.acciones.controller;
 
-import com.prediccion.acciones.controller.ApplicationConversionServiceFactoryBean;
-import com.prediccion.acciones.domain.Company;
-import com.prediccion.acciones.domain.CompanyProperty;
-import com.prediccion.acciones.service.CompanyPropertyService;
-import com.prediccion.acciones.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.format.FormatterRegistry;
+
+import com.prediccion.acciones.domain.Company;
+import com.prediccion.acciones.service.CompanyService;
 
 privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService {
     
@@ -20,8 +18,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     @Autowired
     CompanyService ApplicationConversionServiceFactoryBean.companyService;
     
-    @Autowired
-    CompanyPropertyService ApplicationConversionServiceFactoryBean.companyPropertyService;
     
     public Converter<Company, String> ApplicationConversionServiceFactoryBean.getCompanyToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.prediccion.acciones.domain.Company, java.lang.String>() {
@@ -47,37 +43,12 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
         };
     }
     
-    public Converter<CompanyProperty, String> ApplicationConversionServiceFactoryBean.getCompanyPropertyToStringConverter() {
-        return new org.springframework.core.convert.converter.Converter<com.prediccion.acciones.domain.CompanyProperty, java.lang.String>() {
-            public String convert(CompanyProperty companyProperty) {
-                return new StringBuilder().append(companyProperty.getDisplayName()).append(' ').append(companyProperty.getPropertyValue()).append(' ').append(companyProperty.getField()).append(' ').append(companyProperty.getPropertyOrder()).toString();
-            }
-        };
-    }
     
-    public Converter<Long, CompanyProperty> ApplicationConversionServiceFactoryBean.getIdToCompanyPropertyConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.Long, com.prediccion.acciones.domain.CompanyProperty>() {
-            public com.prediccion.acciones.domain.CompanyProperty convert(java.lang.Long id) {
-                return companyPropertyService.findCompanyProperty(id);
-            }
-        };
-    }
-    
-    public Converter<String, CompanyProperty> ApplicationConversionServiceFactoryBean.getStringToCompanyPropertyConverter() {
-        return new org.springframework.core.convert.converter.Converter<java.lang.String, com.prediccion.acciones.domain.CompanyProperty>() {
-            public com.prediccion.acciones.domain.CompanyProperty convert(String id) {
-                return getObject().convert(getObject().convert(id, Long.class), CompanyProperty.class);
-            }
-        };
-    }
     
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
         registry.addConverter(getCompanyToStringConverter());
         registry.addConverter(getIdToCompanyConverter());
         registry.addConverter(getStringToCompanyConverter());
-        registry.addConverter(getCompanyPropertyToStringConverter());
-        registry.addConverter(getIdToCompanyPropertyConverter());
-        registry.addConverter(getStringToCompanyPropertyConverter());
     }
     
     public void ApplicationConversionServiceFactoryBean.afterPropertiesSet() {

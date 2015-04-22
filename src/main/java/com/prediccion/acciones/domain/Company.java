@@ -1,18 +1,17 @@
 package com.prediccion.acciones.domain;
-import org.springframework.roo.addon.javabean.RooJavaBean;
-import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
-import org.springframework.roo.addon.tostring.RooToString;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.ManyToMany;
-
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.roo.addon.javabean.RooJavaBean;
+import org.springframework.roo.addon.jpa.activerecord.RooJpaActiveRecord;
 import org.springframework.roo.addon.json.RooJson;
+import org.springframework.roo.addon.tostring.RooToString;
 
 @RooJavaBean
 @RooToString
@@ -20,19 +19,21 @@ import org.springframework.roo.addon.json.RooJson;
 @RooJson
 public class Company {
 
-	
-
 	public Company(String title, String ticker, String exchange,
 			String companyId, String localCurrencySymbol,
-			List<CompanyProperty> properties) {
+			Double price52WeekPercChange,Double marketCap,Double pe,String localCurrency) {
 		super();
 		this.title = title;
 		this.ticker = ticker;
 		this.exchange = exchange;
 		this.companyId = companyId;
 		this.localCurrencySymbol = localCurrencySymbol;
-		this.properties = properties;
+		this.price52WeekPercChange =price52WeekPercChange;
+		this.marketCap = marketCap;
+		this.pe = pe;
+		this.localCurrencySymbol=localCurrency;
 		setMarket(exchange);
+		setFechaCreacion(new Date());
 	}
 
 	/**
@@ -54,6 +55,18 @@ public class Company {
     @Column
     private Double minForecastValue;
     
+    @Column
+    private Double price52WeekPercChange;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    private Date fechaCreacion;
+    
+    @Column
+    private Double marketCap;
+    
+    @Column
+    private Double pe;
     /**
      */
     @NotNull
@@ -67,14 +80,9 @@ public class Company {
     @Column(unique = true)
     private String companyId;
 
-    /**
-     */
+    @Column
     private String localCurrencySymbol;
 
-    /**
-     */
-    @ManyToMany(cascade = CascadeType.ALL)
-    private List<CompanyProperty> properties = new ArrayList<CompanyProperty>();
     
     public void setMarket(String exchange){
     	if(exchange.equalsIgnoreCase("NYSE")){
@@ -85,17 +93,26 @@ public class Company {
     		this.market = "LSE";
     	}else if(exchange.equalsIgnoreCase("EPA")){
     		this.market = "PAR";
+    	}else if(exchange.equalsIgnoreCase("OTCQB")){
+    		this.market = "QBB";
     	}
     }
 
 
+
+
 	@Override
 	public String toString() {
-		return "Company [ticker=" + ticker + ", market="
-				+ market + "]"+ ", maxForecastValue="
-				+ maxForecastValue + ", medForecastValue=" + medForecastValue
-				+ ", minForecastValue=" + minForecastValue +", title=    "+title;
+		return "Company [ ticker=" + ticker+ "  , market=" + market
+				+ "  , maxForecastValue=" + maxForecastValue
+				+ "  , medForecastValue=" + medForecastValue
+				+ "  , minForecastValue=" + minForecastValue
+				+ "  , price52WeekPercChange=" + price52WeekPercChange
+				+ "  , marketCap="
+				+ marketCap  +  ", title=" + title + "]";
 	}
+
+
 
 
 	@Override
@@ -130,5 +147,23 @@ public class Company {
 		return true;
 	}
     
-    
+	public void setFechaCreacion(Date date){
+		
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		c.clear(Calendar.SECOND);
+		c.clear(Calendar.MILLISECOND);
+		c.clear(Calendar.MINUTE);
+		c.clear(Calendar.HOUR);
+		c.clear(Calendar.HOUR_OF_DAY);
+		
+		this.fechaCreacion = c.getTime();
+	}
+	
+	public void setExchange(String exchange){
+		
+		this.exchange = exchange;
+		setMarket(exchange);
+	}
+
 }

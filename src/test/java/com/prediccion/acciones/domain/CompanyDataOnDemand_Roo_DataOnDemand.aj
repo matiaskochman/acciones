@@ -8,6 +8,9 @@ import com.prediccion.acciones.domain.CompanyDataOnDemand;
 import com.prediccion.acciones.service.CompanyService;
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -31,11 +34,15 @@ privileged aspect CompanyDataOnDemand_Roo_DataOnDemand {
         Company obj = new Company();
         setCompanyId(obj, index);
         setExchange(obj, index);
+        setFechaCreacion(obj, index);
         setLocalCurrencySymbol(obj, index);
         setMarket(obj, index);
+        setMarketCap(obj, index);
         setMaxForecastValue(obj, index);
         setMedForecastValue(obj, index);
         setMinForecastValue(obj, index);
+        setPe(obj, index);
+        setPrice52WeekPercChange(obj, index);
         setTicker(obj, index);
         setTitle(obj, index);
         return obj;
@@ -51,6 +58,11 @@ privileged aspect CompanyDataOnDemand_Roo_DataOnDemand {
         obj.setExchange(exchange);
     }
     
+    public void CompanyDataOnDemand.setFechaCreacion(Company obj, int index) {
+        Date fechaCreacion = new GregorianCalendar(Calendar.getInstance().get(Calendar.YEAR), Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.DAY_OF_MONTH), Calendar.getInstance().get(Calendar.HOUR_OF_DAY), Calendar.getInstance().get(Calendar.MINUTE), Calendar.getInstance().get(Calendar.SECOND) + new Double(Math.random() * 1000).intValue()).getTime();
+        obj.setFechaCreacion(fechaCreacion);
+    }
+    
     public void CompanyDataOnDemand.setLocalCurrencySymbol(Company obj, int index) {
         String localCurrencySymbol = "localCurrencySymbol_" + index;
         obj.setLocalCurrencySymbol(localCurrencySymbol);
@@ -59,6 +71,11 @@ privileged aspect CompanyDataOnDemand_Roo_DataOnDemand {
     public void CompanyDataOnDemand.setMarket(Company obj, int index) {
         String market = "market_" + index;
         obj.setMarket(market);
+    }
+    
+    public void CompanyDataOnDemand.setMarketCap(Company obj, int index) {
+        Double marketCap = new Integer(index).doubleValue();
+        obj.setMarketCap(marketCap);
     }
     
     public void CompanyDataOnDemand.setMaxForecastValue(Company obj, int index) {
@@ -74,6 +91,16 @@ privileged aspect CompanyDataOnDemand_Roo_DataOnDemand {
     public void CompanyDataOnDemand.setMinForecastValue(Company obj, int index) {
         Double minForecastValue = new Integer(index).doubleValue();
         obj.setMinForecastValue(minForecastValue);
+    }
+    
+    public void CompanyDataOnDemand.setPe(Company obj, int index) {
+        Double pe = new Integer(index).doubleValue();
+        obj.setPe(pe);
+    }
+    
+    public void CompanyDataOnDemand.setPrice52WeekPercChange(Company obj, int index) {
+        Double price52WeekPercChange = new Integer(index).doubleValue();
+        obj.setPrice52WeekPercChange(price52WeekPercChange);
     }
     
     public void CompanyDataOnDemand.setTicker(Company obj, int index) {

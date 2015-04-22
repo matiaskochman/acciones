@@ -8,10 +8,13 @@
         <field:display field="exchange" id="s_com_prediccion_acciones_domain_Company_exchange" object="${company}" z="l6bF1ZnnkthxnJyt9xfNYFmGWFI="/>
         <field:display field="companyId" id="s_com_prediccion_acciones_domain_Company_companyId" object="${company}" z="veMfczwqJXqeZLdRkkCuieDDJpc="/>
         <field:display field="localCurrencySymbol" id="s_com_prediccion_acciones_domain_Company_localCurrencySymbol" object="${company}" z="USqga15If7EJwXFs2RCWyAatxAs="/>
-        <field:display field="properties" id="s_com_prediccion_acciones_domain_Company_properties" object="${company}" z="8nOxW9ODrW0+E0QjAyqbIta+vnI="/>
         <field:display field="market" id="s_com_prediccion_acciones_domain_Company_market" object="${company}" z="TbMTM20U/nZf2oJi00T9gsp8ieg="/>
         <field:display field="maxForecastValue" id="s_com_prediccion_acciones_domain_Company_maxForecastValue" object="${company}" z="PaVYNS9rUNDkKlsfQoCy9OMhX+8="/>
         <field:display field="medForecastValue" id="s_com_prediccion_acciones_domain_Company_medForecastValue" object="${company}" z="rg8BEfblN5xvHjnF6+WpbDi+hRk="/>
         <field:display field="minForecastValue" id="s_com_prediccion_acciones_domain_Company_minForecastValue" object="${company}" z="nlYnaysnPDNRH3x02z/nz380lRQ="/>
+        <field:display field="marketCap" id="s_com_prediccion_acciones_domain_Company_marketCap" object="${company}" z="TBKOEG4D37lJ8OddWc7+SmP2NhY="/>
+        <field:display field="pe" id="s_com_prediccion_acciones_domain_Company_pe" object="${company}" z="LDyutCZiNkdf0KivXvjKpvR5bDg="/>
+        <field:display field="price52WeekPercChange" id="s_com_prediccion_acciones_domain_Company_price52WeekPercChange" object="${company}" z="NbpJahG+2EcgRcxVfIW7ovTqxQA="/>
+        <field:display date="true" dateTimePattern="${company_fechacreacion_date_format}" field="fechaCreacion" id="s_com_prediccion_acciones_domain_Company_fechaCreacion" object="${company}" z="9Icp+UaTctUlLXTYK7jWlU2SGW0="/>
     </page:show>
 </div>

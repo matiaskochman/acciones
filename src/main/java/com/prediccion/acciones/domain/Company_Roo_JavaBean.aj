@@ -4,8 +4,7 @@
 package com.prediccion.acciones.domain;
 
 import com.prediccion.acciones.domain.Company;
-import com.prediccion.acciones.domain.CompanyProperty;
-import java.util.List;
+import java.util.Date;
 
 privileged aspect Company_Roo_JavaBean {
     
@@ -49,13 +48,38 @@ privileged aspect Company_Roo_JavaBean {
         this.minForecastValue = minForecastValue;
     }
     
+    public Double Company.getPrice52WeekPercChange() {
+        return this.price52WeekPercChange;
+    }
+    
+    public void Company.setPrice52WeekPercChange(Double price52WeekPercChange) {
+        this.price52WeekPercChange = price52WeekPercChange;
+    }
+    
+    public Date Company.getFechaCreacion() {
+        return this.fechaCreacion;
+    }
+    
+    public Double Company.getMarketCap() {
+        return this.marketCap;
+    }
+    
+    public void Company.setMarketCap(Double marketCap) {
+        this.marketCap = marketCap;
+    }
+    
+    public Double Company.getPe() {
+        return this.pe;
+    }
+    
+    public void Company.setPe(Double pe) {
+        this.pe = pe;
+    }
+    
     public String Company.getExchange() {
         return this.exchange;
     }
     
-    public void Company.setExchange(String exchange) {
-        this.exchange = exchange;
-    }
     
     public String Company.getMarket() {
         return this.market;
@@ -75,14 +99,6 @@ privileged aspect Company_Roo_JavaBean {
     
     public void Company.setLocalCurrencySymbol(String localCurrencySymbol) {
         this.localCurrencySymbol = localCurrencySymbol;
-    }
-    
-    public List<CompanyProperty> Company.getProperties() {
-        return this.properties;
-    }
-    
-    public void Company.setProperties(List<CompanyProperty> properties) {
-        this.properties = properties;
     }
     
 }

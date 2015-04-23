@@ -16,7 +16,10 @@ public class Processor implements Runnable{
 	CountDownLatch countDownLatch;
 	Company company;
 	String data;
-	Pattern financial_times_pattern = Pattern.compile("-*\\d+(.)\\d*\\s*%");
+	Pattern forecast_porcentaje_pattern = Pattern.compile("-*\\d+(.)\\d*\\s*%");
+	Pattern forecast_valores_pattern = Pattern.compile("\\\"td\\\":\\s*\\[\\s*\\\"-*\\d+(.)\\d\\d\\\"\\,\\s*\\\"-*\\d+(.)\\d\\d\\\",\\s*\\\"-*\\d+(.)\\d\\d\\\"\\s*\\]");
+	Pattern precio_accion_pattern = Pattern.compile("\"content\":\\s*\"-*\\d+(.)\\d\\d\"");
+	
 	TreeSet<Company> treeSet;
 
 	public Processor(CountDownLatch countDownLatch,Company company,TreeSet<Company> set) {
@@ -26,8 +29,8 @@ public class Processor implements Runnable{
 		this.treeSet = set;
 	}
 
-	private void extractFromYqlResult() throws Exception {
-		Matcher m = financial_times_pattern.matcher(data);
+	private void extract_forecast_porcentaje() throws Exception {
+		Matcher m = forecast_porcentaje_pattern.matcher(data);
 		 int start1 = 0;
 		 int start2 = 0;
 		 int start3 = 0;
@@ -115,7 +118,10 @@ public class Processor implements Runnable{
 			System.out.println(fullUrlStr);
 			
 			data = HttpConectionUtils.getData(fullUrlStr);
-			 extractFromYqlResult();
+			
+			extract_forecast_porcentaje();
+			 
+			 
 			System.out.println("equity symbol: "+company.getTicker()+":"+company.getMarket()+"   "+data);
 			System.out.println(countDownLatch.getCount());
 			

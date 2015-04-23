@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.net.URL;
 
 public class HttpConectionUtils {
@@ -11,9 +13,10 @@ public class HttpConectionUtils {
 		
 	
 	public static String getData(String address) throws Exception {
-		  
-		HttpURLConnection conn = (HttpURLConnection) new URL(address).openConnection();
-		conn.setConnectTimeout(7000);
+		
+		Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.18.3.100", 8080));
+		HttpURLConnection conn = (HttpURLConnection) new URL(address).openConnection(proxy);
+		conn.setConnectTimeout(10000);
 		  
 	    URL url = new URL(address);
 	    StringBuffer text = new StringBuffer();

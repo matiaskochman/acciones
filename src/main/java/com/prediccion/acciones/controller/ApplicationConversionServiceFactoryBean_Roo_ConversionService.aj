@@ -3,13 +3,13 @@
 
 package com.prediccion.acciones.controller;
 
+import com.prediccion.acciones.controller.ApplicationConversionServiceFactoryBean;
+import com.prediccion.acciones.domain.Company;
+import com.prediccion.acciones.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.format.FormatterRegistry;
-
-import com.prediccion.acciones.domain.Company;
-import com.prediccion.acciones.service.CompanyService;
 
 privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService {
     
@@ -17,7 +17,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
     
     @Autowired
     CompanyService ApplicationConversionServiceFactoryBean.companyService;
-    
     
     public Converter<Company, String> ApplicationConversionServiceFactoryBean.getCompanyToStringConverter() {
         return new org.springframework.core.convert.converter.Converter<com.prediccion.acciones.domain.Company, java.lang.String>() {
@@ -42,8 +41,6 @@ privileged aspect ApplicationConversionServiceFactoryBean_Roo_ConversionService 
             }
         };
     }
-    
-    
     
     public void ApplicationConversionServiceFactoryBean.installLabelConverters(FormatterRegistry registry) {
         registry.addConverter(getCompanyToStringConverter());

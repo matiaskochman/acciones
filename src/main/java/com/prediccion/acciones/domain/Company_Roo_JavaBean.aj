@@ -80,7 +80,6 @@ privileged aspect Company_Roo_JavaBean {
         return this.exchange;
     }
     
-    
     public String Company.getMarket() {
         return this.market;
     }

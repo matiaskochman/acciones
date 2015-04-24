@@ -18,7 +18,7 @@ public class Processor implements Runnable{
 	String data;
 	Pattern forecast_porcentaje_pattern = Pattern.compile("-*\\d+(.)\\d*\\s*%");
 	Pattern forecast_valores_pattern = Pattern.compile("\\\"td\\\":\\s*\\[\\s*\\\"-*\\d+(.)\\d\\d\\\"\\,\\s*\\\"-*\\d+(.)\\d\\d\\\",\\s*\\\"-*\\d+(.)\\d\\d\\\"\\s*\\]");
-	Pattern precio_accion_pattern = Pattern.compile("\\\"content\\\":\\s*\"-*\\d+(.)\\d\\d\"");
+	Pattern precio_accion_pattern = Pattern.compile("\\\"content\\\":\\s*\\\"-*\\d+(.)\\d\\d\\\"");
 	Pattern volumen_negociado = Pattern.compile("volume_magnitude\",\\s*\\\"content\\\":\\s*\\\"\\d+(.)\\d\\d[mkb]\\\"\\s*}");
 	/*
 	Pattern recomendacion_outperform = Pattern.compile("Outperform\\\"\\s*},"
@@ -48,11 +48,21 @@ public class Processor implements Runnable{
 	private void extract_precio_accion(){
 		Matcher m = precio_accion_pattern.matcher(data);
 		
-		int start=m.start();
-		int end=m.end();
+		if(m.find()){
+			int start=m.start();
+			int end=m.end();
+			String precio = data.substring(start, end);
+			Pattern valor = Pattern.compile("-*\\d+(.)\\d\\d");
+			Matcher m_precio_accion = valor.matcher(precio);
+			if(m_precio_accion.find()){
+				String valor_precio_accion = precio.substring(m_precio_accion.start(), m_precio_accion.end());
+				 this.company.setStockValue(new Double(valor_precio_accion)) ;
+				
+			}
+		}else {
+			System.out.println("yql extract -- la accion no tiene precio");
+		}
 		
-		String precio = data.substring(start, end);
-		precio.length();
 		
 	}
 	

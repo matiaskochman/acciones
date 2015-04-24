@@ -24,7 +24,7 @@ import com.prediccion.acciones.utils.HttpConectionUtils;
 @Transactional
 public class ParsingServiceImpl implements ParsingService{
 
-	int CONCURRENT_THREADS = 1;
+	int CONCURRENT_THREADS = 20;
 	public void loviejo(){
 		/*
 		String baseUrl = "http://query.yahooapis.com/v1/public/yql?q=";

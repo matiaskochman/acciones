@@ -45,8 +45,10 @@ public class Company {
     /**
      */
     @NotNull
-    @Column(unique = true)
     private String ticker;
+    
+    @NotNull
+    private String market;
 
     @Column
     private Double stockValue;
@@ -77,9 +79,6 @@ public class Company {
      */
     @NotNull
     private String exchange;
-
-    @NotNull
-    private String market;
     
     /**
      */
@@ -103,22 +102,6 @@ public class Company {
     		this.market = "QBB";
     	}
     }
-
-
-
-
-	@Override
-	public String toString() {
-		return "Company [ ticker=" + ticker+ "  , market=" + market
-				+ "  , maxForecastValue=" + maxForecastPercentageValue
-				+ "  , medForecastValue=" + medForecastPercentageValue
-				+ "  , minForecastValue=" + minForecastPercentageValue
-				+ "  , price52WeekPercChange=" + price52WeekPercChange
-				+ "  , marketCap="
-				+ marketCap  +  ", title=" + title + "]";
-	}
-
-
 
 
 	@Override
@@ -172,4 +155,17 @@ public class Company {
 		setMarket(exchange);
 	}
 
+
+	@Override
+	public String toString() {
+		return "Company [ticker=" + ticker + ", market=" + market
+				+ ", stockValue=" + stockValue
+				+ ", maxForecastPercentageValue=" + maxForecastPercentageValue
+				+ ", medForecastPercentageValue=" + medForecastPercentageValue
+				+ ", minForecastPercentageValue=" + minForecastPercentageValue
+				+ ", price52WeekPercChange=" + price52WeekPercChange + "]";
+	}
+
+	
+	
 }

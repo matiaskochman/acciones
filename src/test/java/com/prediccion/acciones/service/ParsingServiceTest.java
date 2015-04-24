@@ -1,6 +1,5 @@
 package com.prediccion.acciones.service;
 
-import java.util.List;
 import java.util.Set;
 
 import org.junit.Test;
@@ -19,9 +18,19 @@ public class ParsingServiceTest extends AbstractJUnit4SpringContextTests{
     @Test
     public void test(){
     	
-		String s = "https://www.google.com/finance?output=json&start=0&num=100&noIL=1&q=[%28exchange%20%3D%3D%20%22EPA%22%29%20%26%20%28market_cap%20%3E%3D%200%29%20%26%20%28market_cap%20%3C%3D%20127180000000%29%20%26%20%28pe_ratio%20%3E%3D%200%29%20%26%20%28pe_ratio%20%3C%3D%2010098%29%20%26%20%28dividend_yield%20%3E%3D%200%29%20%26%20%28dividend_yield%20%3C%3D%20171%29%20%26%20%28price_change_52week%20%3E%3D%20-84%29%20%26%20%28price_change_52week%20%3C%3D%201010%29]&restype=company&ei=jfs2VZHuH-zwsQfMhoCAAw&sortas=MarketCap";
+		String s = "https://www.google.com/finance?output=json&start=0&"
+				+ "num=10&noIL=1&q=[%28"
+				+ "exchange%20%3D%3D%20%22EPA%22%29%20%26%20%28"
+				+ "market_cap%20%3E%3D%200%29%20%26%20%28"
+				+ "market_cap%20%3C%3D%20127180000000%29%20%26%20%28"
+				+ "pe_ratio%20%3E%3D%200%29%20%26%20%28"
+				+ "pe_ratio%20%3C%3D%2010098%29%20%26%20%28"
+				+ "dividend_yield%20%3E%3D%200%29%20%26%20%28"
+				+ "dividend_yield%20%3C%3D%20171%29%20%26%20%28"
+				+ "price_change_52week%20%3E%3D%20-84%29%20%26%20%28"
+				+ "price_change_52week%20%3C%3D%201010%29]&restype=company&ei=jfs2VZHuH-zwsQfMhoCAAw&sortas=MarketCap";
 
-		String maxNumEmpresas = "100";
+		String maxNumEmpresas = "10";
 		String price_change_52week_from = "-90";
 		String marketCap_from = "1000000";
 		String nasdaq = "exchange%20%3D%3D%20%22NASDAQ%22%29%29%20%26%20%28";

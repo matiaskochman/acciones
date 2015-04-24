@@ -45,7 +45,16 @@ public class Processor implements Runnable{
 		this.treeSet = set;
 	}
 
-	
+	private void extract_precio_accion(){
+		Matcher m = precio_accion_pattern.matcher(data);
+		
+		int start=0;
+		int end=0;
+		
+		String precio = data.substring(start, end);
+		precio.length();
+		
+	}
 	
 	private void extract_forecast_porcentaje() throws Exception {
 		Matcher m = forecast_porcentaje_pattern.matcher(data);
@@ -119,17 +128,17 @@ public class Processor implements Runnable{
 	public void run() {
 		try {
 			
+			final String precioAccion = "//div[@class=\"contains wsodModuleContent\"]/table/tbody/tr/td[1]/span'"; 
+			final String porcentajeForecast = "//table[@class=\"fright\"]/tbody/tr/td[2]/span";
+			final String valoresForecast = "//table[@class=\"fright\"]/tbody/tr/td[3]";
 			
 			String newString = "select * from html where url='http://markets.ft.com/research/Markets/Tearsheets/Forecasts?s=YPF:NYQ' and xpath='//table[@class=\"fright\"]/tbody/tr/td[2]/span|//div[@class=\"contains wsodModuleContent\"]/table/tbody/tr/td[1]/span'";
 					
 			String baseUrl = "http://query.yahooapis.com/v1/public/yql?q=";
 			
 			final String financialTimes = "http://markets.ft.com/research/Markets/Tearsheets/Forecasts?s="+this.company.getTicker()+":"+this.company.getMarket();
-			final String yql ="select * from html where url='"+financialTimes+"' "+"and xpath='//table[@class=\"fright\"]/tbody/tr/td[2]/span'"; 
+			final String yql ="select * from html where url='"+financialTimes+"' "+"and xpath='"+porcentajeForecast+"'"; 
 			
-			final String precioAccion = "//div[@class=\"contains wsodModuleContent\"]/table/tbody/tr/td[1]/span'"; 
-			final String porcentajeForecast = "//table[@class=\"fright\"]/tbody/tr/td[2]/span";
-			final String valoresForecast = "//table[@class=\"fright\"]/tbody/tr/td[3]";
 			
 			final String fullUrlStr = baseUrl + URLEncoder.encode(yql, "UTF-8") + "&format=json";
 			
@@ -168,14 +177,4 @@ public class Processor implements Runnable{
 		System.out.println("Finished");
 	}
 
-	private void extract_precio_accion() {
-		Matcher m = precio_accion_pattern.matcher(data);
-		 int start1 = 0;
-		 int end1 = 0;
-		 
-		 if(m.find()){
-			 
-		 }
-		
-	}	
 }

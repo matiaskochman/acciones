@@ -9,7 +9,7 @@
             <table:column id="c_com_prediccion_acciones_domain_Company_stockValue" property="stockValue" z="XZ2frzYYdxW2S8SgkEO8G+hrDmY="/>
             <table:column id="c_com_prediccion_acciones_domain_Company_volumenNegociadoAyer" property="volumenNegociadoAyer" z="vNeTLJMT3wHx3C4I9iBOIJKfAnI="/>
             <table:column id="c_com_prediccion_acciones_domain_Company_maxForecastPercentageValue" property="maxForecastPercentageValue" z="BiUDEXLfPcUJxko/x9j4Jsw3MQo="/>
-            <table:column id="c_com_prediccion_acciones_domain_Company_medForecastPercentageValue" property="medForecastPercentageValue" z="SUQsBFsAtMNm3fbkQTAsIw92NDo="/>
+            <table:column id="c_com_prediccion_acciones_domain_Company_market" property="market" z="q/r0vdINBUaaeJQleIL47Wo58Eo="/>
         </table:table>
     </page:list>
 </div>

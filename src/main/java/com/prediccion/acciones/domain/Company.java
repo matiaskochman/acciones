@@ -66,6 +66,19 @@ public class Company {
     @Column
     private Double price52WeekPercChange;
     
+    @Column
+    private Integer recomendacionBuy;
+    @Column
+    private Integer recomendacionOutPerform;
+    @Column
+    private Integer recomendacionHold;
+    @Column
+    private Integer recomendacionUnderPerform;
+    @Column
+    private Integer recomendacionUnderSell;
+    @Column
+    private Integer recomendacionUnderNoOpinion;
+    
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date fechaCreacion;
@@ -163,9 +176,9 @@ public class Company {
 				+ ", maxForecastPercentageValue=" + maxForecastPercentageValue
 				+ ", medForecastPercentageValue=" + medForecastPercentageValue
 				+ ", minForecastPercentageValue=" + minForecastPercentageValue
-				+ ", price52WeekPercChange=" + price52WeekPercChange + "]";
+				+ ", price52WeekPercChange=" + price52WeekPercChange
+				+ ", recomendacionBuy=" + recomendacionBuy + "]";
 	}
 
-	
 	
 }

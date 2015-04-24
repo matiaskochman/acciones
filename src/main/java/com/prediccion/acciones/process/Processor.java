@@ -11,7 +11,7 @@ import com.prediccion.acciones.utils.HttpConectionUtils;
 
 public class Processor implements Runnable{
 	
-	Integer CONCURRENT_THREADS = 200;
+	Integer CONCURRENT_THREADS = 20;
 	
 	CountDownLatch countDownLatch;
 	Company company;
@@ -20,11 +20,9 @@ public class Processor implements Runnable{
 	Pattern forecast_valores_pattern = Pattern.compile("\\\"td\\\":\\s*\\[\\s*\\\"-*\\d+(.)\\d\\d\\\"\\,\\s*\\\"-*\\d+(.)\\d\\d\\\",\\s*\\\"-*\\d+(.)\\d\\d\\\"\\s*\\]");
 	Pattern precio_accion_pattern = Pattern.compile("\\\"content\\\":\\s*\\\"-*\\d+(.)\\d\\d\\\"");
 	Pattern volumen_negociado = Pattern.compile("volume_magnitude\",\\s*\\\"content\\\":\\s*\\\"\\d+(.)\\d\\d[mkb]\\\"\\s*}");
-	/*
 	Pattern recomendacion_outperform = Pattern.compile("Outperform\\\"\\s*},"
-			+ "\\s*{\\s*\\\"class\\\"..........\\s*...........................\\s*"
+			+ "\\s*.\\s*\\\"class\\\"..........\\s*...........................\\s*"
 			+ "\\\"content\\\":\\s*\\\"\\d+\\\"");
-*/
 	Pattern recomendacion_buy = Pattern.compile("Buy\\\"\\s*},\\s*.\\s*\\\"class\\\":\\s*\\\"value\\\",\\s*\\\"content\\\":\\s*\\\"\\d+\\\"");
 	
 	Pattern recomendacion_hold = Pattern.compile("Hold\\\"\\s*},\\s*.\\s*\\\"class\\\":"
@@ -45,6 +43,28 @@ public class Processor implements Runnable{
 		this.treeSet = set;
 	}
 
+	
+	private void extract_recomendacion_buy(){
+		Matcher m = recomendacion_buy.matcher(data);
+		
+		if(m.find()){
+			int start=m.start();
+			int end=m.end();
+			String precio = data.substring(start, end);
+			Pattern valor = Pattern.compile("\\d");
+			Matcher m_recomendacion_buy = valor.matcher(precio);
+			if(m_recomendacion_buy.find()){
+				String valor_precio_accion = precio.substring(m_recomendacion_buy.start(), m_recomendacion_buy.end());
+				 this.company.setRecomendacionBuy(new Integer(valor_precio_accion)) ;
+				
+			}
+		}else {
+			System.out.println("yql extract -- la accion no tiene precio");
+		}
+		
+		
+	}
+	
 	private void extract_precio_accion(){
 		Matcher m = precio_accion_pattern.matcher(data);
 		
@@ -52,7 +72,7 @@ public class Processor implements Runnable{
 			int start=m.start();
 			int end=m.end();
 			String precio = data.substring(start, end);
-			Pattern valor = Pattern.compile("-*\\d+(.)\\d\\d");
+			Pattern valor = Pattern.compile("-*\\d+\\.*\\d*");
 			Matcher m_precio_accion = valor.matcher(precio);
 			if(m_precio_accion.find()){
 				String valor_precio_accion = precio.substring(m_precio_accion.start(), m_precio_accion.end());
@@ -142,12 +162,13 @@ public class Processor implements Runnable{
 			final String porcentajeForecast = "//table[@class=\"fright\"]/tbody/tr/td[2]/span";
 			final String valoresForecast = "//table[@class=\"fright\"]/tbody/tr/td[3]";
 			
+			final String latestRecomendations = "//div[@class=\"wsodRecommendationRating wsodModuleLastInGridColumn\"]/table";
 			String newString = "select * from html where url='http://markets.ft.com/research/Markets/Tearsheets/Forecasts?s=YPF:NYQ' and xpath='//table[@class=\"fright\"]/tbody/tr/td[2]/span|//div[@class=\"contains wsodModuleContent\"]/table/tbody/tr/td[1]/span'";
 					
 			String baseUrl = "http://query.yahooapis.com/v1/public/yql?q=";
 			
 			final String financialTimes = "http://markets.ft.com/research/Markets/Tearsheets/Forecasts?s="+this.company.getTicker()+":"+this.company.getMarket();
-			final String yql ="select * from html where url='"+financialTimes+"' "+"and xpath='"+porcentajeForecast+"|"+precioAccion+"'"; 
+			final String yql ="select * from html where url='"+financialTimes+"' "+"and xpath='"+porcentajeForecast+"|"+latestRecomendations+"|"+precioAccion+"'"; 
 			
 			
 			final String fullUrlStr = baseUrl + URLEncoder.encode(yql, "UTF-8") + "&format=json";
@@ -158,7 +179,8 @@ public class Processor implements Runnable{
 			
 			extract_forecast_porcentaje();
 			extract_precio_accion();
-			 
+			extract_recomendacion_buy();
+			
 			System.out.println("equity symbol: "+company.getTicker()+":"+company.getMarket()+"   "+data);
 			System.out.println(countDownLatch.getCount());
 			

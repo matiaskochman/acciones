@@ -18,5 +18,11 @@
         <field:display field="maxForecastPercentageValue" id="s_com_prediccion_acciones_domain_Company_maxForecastPercentageValue" object="${company}" z="VXO/UvWOCkRTNs2OabtnGNK52jQ="/>
         <field:display field="medForecastPercentageValue" id="s_com_prediccion_acciones_domain_Company_medForecastPercentageValue" object="${company}" z="o/k+uQtHDTyNm7HWFkjA6VKs/wc="/>
         <field:display field="minForecastPercentageValue" id="s_com_prediccion_acciones_domain_Company_minForecastPercentageValue" object="${company}" z="Twxg9M5fWqCKisQR4sDyJZGMLEw="/>
+        <field:display field="recomendacionBuy" id="s_com_prediccion_acciones_domain_Company_recomendacionBuy" object="${company}" z="9I9SRmhsORdqYlXJYOO748ifeyo="/>
+        <field:display field="recomendacionOutPerform" id="s_com_prediccion_acciones_domain_Company_recomendacionOutPerform" object="${company}" z="WwpP6hqTDOoiszc2ud8tTO7Q3is="/>
+        <field:display field="recomendacionHold" id="s_com_prediccion_acciones_domain_Company_recomendacionHold" object="${company}" z="cEivFSX6xEY0eTi20BN5Q6IjBrU="/>
+        <field:display field="recomendacionUnderPerform" id="s_com_prediccion_acciones_domain_Company_recomendacionUnderPerform" object="${company}" z="P7ParH3ufPn3/oPW7YQJJdKrwjk="/>
+        <field:display field="recomendacionUnderSell" id="s_com_prediccion_acciones_domain_Company_recomendacionUnderSell" object="${company}" z="NvChDBu3PTpOZhMNOrZy6H4OaRE="/>
+        <field:display field="recomendacionUnderNoOpinion" id="s_com_prediccion_acciones_domain_Company_recomendacionUnderNoOpinion" object="${company}" z="3uoBuqmBUstOWeixQvFBX9TG5zk="/>
     </page:show>
 </div>

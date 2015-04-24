@@ -18,6 +18,12 @@
         <field:input field="maxForecastPercentageValue" id="c_com_prediccion_acciones_domain_Company_maxForecastPercentageValue" validationMessageCode="field_invalid_number" z="K1rfLOfzilZfKVm+ship5TChePc="/>
         <field:input field="medForecastPercentageValue" id="c_com_prediccion_acciones_domain_Company_medForecastPercentageValue" validationMessageCode="field_invalid_number" z="gVWa4S4k/JecPt8hZIF4/xkDJaQ="/>
         <field:input field="minForecastPercentageValue" id="c_com_prediccion_acciones_domain_Company_minForecastPercentageValue" validationMessageCode="field_invalid_number" z="+6Qi9r3ur/gAluLRZOtHGlmAph0="/>
+        <field:input field="recomendacionBuy" id="c_com_prediccion_acciones_domain_Company_recomendacionBuy" validationMessageCode="field_invalid_integer" z="FCp+oRITdw0MkCGnVmzDzpNu7Do="/>
+        <field:input field="recomendacionOutPerform" id="c_com_prediccion_acciones_domain_Company_recomendacionOutPerform" validationMessageCode="field_invalid_integer" z="eaidqaXF+IGwLs7sqPeYn6q3qXM="/>
+        <field:input field="recomendacionHold" id="c_com_prediccion_acciones_domain_Company_recomendacionHold" validationMessageCode="field_invalid_integer" z="K3b9Ipawu8Bd4rRUGjLt1e0SS6s="/>
+        <field:input field="recomendacionUnderPerform" id="c_com_prediccion_acciones_domain_Company_recomendacionUnderPerform" validationMessageCode="field_invalid_integer" z="O0vrUlwd34n3KlBrZ1Yk7i1HIuE="/>
+        <field:input field="recomendacionUnderSell" id="c_com_prediccion_acciones_domain_Company_recomendacionUnderSell" validationMessageCode="field_invalid_integer" z="i/hxNNCoT3xCDRYFi9/EU7EJ7Ms="/>
+        <field:input field="recomendacionUnderNoOpinion" id="c_com_prediccion_acciones_domain_Company_recomendacionUnderNoOpinion" validationMessageCode="field_invalid_integer" z="amef5ot6TeynXy+TiIA8UnnVlF8="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_prediccion_acciones_domain_Company" render="${not empty dependencies}" z="1HM9kqb281OwQccFw0Qo49aZxL4="/>
 </div>

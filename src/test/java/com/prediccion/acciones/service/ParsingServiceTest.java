@@ -30,7 +30,7 @@ public class ParsingServiceTest extends AbstractJUnit4SpringContextTests{
 				+ "price_change_52week%20%3E%3D%20-84%29%20%26%20%28"
 				+ "price_change_52week%20%3C%3D%201010%29]&restype=company&ei=jfs2VZHuH-zwsQfMhoCAAw&sortas=MarketCap";
 
-		String maxNumEmpresas = "100";
+		String maxNumEmpresas = "20";
 		String price_change_52week_from = "-90";
 		String marketCap_from = "1000000";
 		String nasdaq = "exchange%20%3D%3D%20%22NASDAQ%22%29%29%20%26%20%28";

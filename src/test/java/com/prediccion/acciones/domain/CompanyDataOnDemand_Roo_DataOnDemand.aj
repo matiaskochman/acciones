@@ -43,6 +43,12 @@ privileged aspect CompanyDataOnDemand_Roo_DataOnDemand {
         setMinForecastPercentageValue(obj, index);
         setPe(obj, index);
         setPrice52WeekPercChange(obj, index);
+        setRecomendacionBuy(obj, index);
+        setRecomendacionHold(obj, index);
+        setRecomendacionOutPerform(obj, index);
+        setRecomendacionUnderNoOpinion(obj, index);
+        setRecomendacionUnderPerform(obj, index);
+        setRecomendacionUnderSell(obj, index);
         setStockValue(obj, index);
         setTicker(obj, index);
         setTitle(obj, index);
@@ -103,6 +109,36 @@ privileged aspect CompanyDataOnDemand_Roo_DataOnDemand {
     public void CompanyDataOnDemand.setPrice52WeekPercChange(Company obj, int index) {
         Double price52WeekPercChange = new Integer(index).doubleValue();
         obj.setPrice52WeekPercChange(price52WeekPercChange);
+    }
+    
+    public void CompanyDataOnDemand.setRecomendacionBuy(Company obj, int index) {
+        Integer recomendacionBuy = new Integer(index);
+        obj.setRecomendacionBuy(recomendacionBuy);
+    }
+    
+    public void CompanyDataOnDemand.setRecomendacionHold(Company obj, int index) {
+        Integer recomendacionHold = new Integer(index);
+        obj.setRecomendacionHold(recomendacionHold);
+    }
+    
+    public void CompanyDataOnDemand.setRecomendacionOutPerform(Company obj, int index) {
+        Integer recomendacionOutPerform = new Integer(index);
+        obj.setRecomendacionOutPerform(recomendacionOutPerform);
+    }
+    
+    public void CompanyDataOnDemand.setRecomendacionUnderNoOpinion(Company obj, int index) {
+        Integer recomendacionUnderNoOpinion = new Integer(index);
+        obj.setRecomendacionUnderNoOpinion(recomendacionUnderNoOpinion);
+    }
+    
+    public void CompanyDataOnDemand.setRecomendacionUnderPerform(Company obj, int index) {
+        Integer recomendacionUnderPerform = new Integer(index);
+        obj.setRecomendacionUnderPerform(recomendacionUnderPerform);
+    }
+    
+    public void CompanyDataOnDemand.setRecomendacionUnderSell(Company obj, int index) {
+        Integer recomendacionUnderSell = new Integer(index);
+        obj.setRecomendacionUnderSell(recomendacionUnderSell);
     }
     
     public void CompanyDataOnDemand.setStockValue(Company obj, int index) {

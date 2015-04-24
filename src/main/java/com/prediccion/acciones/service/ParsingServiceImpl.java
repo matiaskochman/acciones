@@ -24,25 +24,13 @@ import com.prediccion.acciones.utils.HttpConectionUtils;
 @Transactional
 public class ParsingServiceImpl implements ParsingService{
 
-	int CONCURRENT_THREADS = 20;
-	public void loviejo(){
-		/*
-		String baseUrl = "http://query.yahooapis.com/v1/public/yql?q=";
-		
-		final String financialTimes = "http://markets.ft.com/research/Markets/Tearsheets/Forecasts?s="+this.equity.symbol+":"+this.equity.market;
-		final String yql ="select * from html where url='"+financialTimes+"' "+"and xpath='//table[@class=\"fright\"]/tbody/tr/td[2]/span'"; 
-		
-		final String fullUrlStr = baseUrl + URLEncoder.encode(yql, "UTF-8") + "&format=json";
-		*/
-	}
-	
+	int CONCURRENT_THREADS = 5;
 	
 	public List<Company> createCompanies(CompanyJson[] companyArray){
 		List<Company> list = new ArrayList<Company>();
 		
 		Company company = null;
 		for (CompanyJson c : companyArray) {
-			//company = new Company(c.title, c.ticker, c.exchange, c.id, c.local_currency_symbol, new ArrayList<CompanyProperty>());
 			
 			company = new Company();
 			
@@ -52,15 +40,12 @@ public class ParsingServiceImpl implements ParsingService{
 			company.setCompanyId(c.id);
 			company.setLocalCurrencySymbol(c.local_currency_symbol);
 			
-			//CompanyProperty property = null;
 			for (ColumnJson col : c.columns) {
-				//property = new CompanyProperty();
 
 				try{
 					if(StringUtils.isEmpty(col.field)||StringUtils.isEmpty(col.value)){
 						throw new Exception();
 					}else{
-						
 						if(col.field.equalsIgnoreCase("MarketCap")){
 							if(col.value.contains("B")){
 								int i = col.value.indexOf("B");
@@ -76,15 +61,7 @@ public class ParsingServiceImpl implements ParsingService{
 							company.setPrice52WeekPercChange(Double.valueOf(col.value));
 							
 						}
-						/*
-						property.setDisplayName(col.display_name);
-						property.setField(col.field);
-						
-						property.setPropertyValue(Double.valueOf(col.value));
-						property.setPropertyOrder(col.sort_order);
-						*/
 					}
-					//company.getProperties().add(property);
 					
 				}catch(NumberFormatException e){
 					System.out.println("numberFormatException property skipped");
@@ -99,8 +76,6 @@ public class ParsingServiceImpl implements ParsingService{
 	}
 	
 	public Set<Company> getSocksFromGoogleFinance(String query){
-		
-		
 		List<Company> companyList = null;
 		
 		String result="";
@@ -119,12 +94,10 @@ public class ParsingServiceImpl implements ParsingService{
 			Pattern p_european = Pattern.compile("\\[\\{\"title\"+[\\x00-\\x7F|€|£]+(?=\\,\\\"mf_searchresults)");
 			
 			result = HttpConectionUtils.getData(query);
-			//result = HttpConectionUtils.getData(s);
 			
 			System.out.println(result);
 			Matcher m = p_european.matcher(result);
 
-			//\[\{("title")+[\x00-\x7F]+(?=\,\"mf_searchresults)
 			CompanyJson[] companyArray = null;
 			if(m.find()){
 				String sub = result.substring(m.start(),m.end());
@@ -138,15 +111,12 @@ public class ParsingServiceImpl implements ParsingService{
 			
 		    companyList = createCompanies(companyArray);
 		    
-		    
 			CountDownLatch countDownLatch=new CountDownLatch(companyList.size());
-			
 			ExecutorService executorService=Executors.newFixedThreadPool(CONCURRENT_THREADS);
 			
 			for (Company company : companyList) {
 				executorService.submit(new Processor(countDownLatch,company,resultSet));
 			}
-			
 			try {
 				countDownLatch.await();
 			} catch (InterruptedException e) {
@@ -156,8 +126,6 @@ public class ParsingServiceImpl implements ParsingService{
 			
 			executorService.shutdown();
 			
-			
-		    
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

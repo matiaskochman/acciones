@@ -24,6 +24,10 @@ privileged aspect Company_Roo_JavaBean {
         this.ticker = ticker;
     }
     
+    public String Company.getMarket() {
+        return this.market;
+    }
+    
     public Double Company.getStockValue() {
         return this.stockValue;
     }
@@ -72,6 +76,54 @@ privileged aspect Company_Roo_JavaBean {
         this.price52WeekPercChange = price52WeekPercChange;
     }
     
+    public Integer Company.getRecomendacionBuy() {
+        return this.recomendacionBuy;
+    }
+    
+    public void Company.setRecomendacionBuy(Integer recomendacionBuy) {
+        this.recomendacionBuy = recomendacionBuy;
+    }
+    
+    public Integer Company.getRecomendacionOutPerform() {
+        return this.recomendacionOutPerform;
+    }
+    
+    public void Company.setRecomendacionOutPerform(Integer recomendacionOutPerform) {
+        this.recomendacionOutPerform = recomendacionOutPerform;
+    }
+    
+    public Integer Company.getRecomendacionHold() {
+        return this.recomendacionHold;
+    }
+    
+    public void Company.setRecomendacionHold(Integer recomendacionHold) {
+        this.recomendacionHold = recomendacionHold;
+    }
+    
+    public Integer Company.getRecomendacionUnderPerform() {
+        return this.recomendacionUnderPerform;
+    }
+    
+    public void Company.setRecomendacionUnderPerform(Integer recomendacionUnderPerform) {
+        this.recomendacionUnderPerform = recomendacionUnderPerform;
+    }
+    
+    public Integer Company.getRecomendacionUnderSell() {
+        return this.recomendacionUnderSell;
+    }
+    
+    public void Company.setRecomendacionUnderSell(Integer recomendacionUnderSell) {
+        this.recomendacionUnderSell = recomendacionUnderSell;
+    }
+    
+    public Integer Company.getRecomendacionUnderNoOpinion() {
+        return this.recomendacionUnderNoOpinion;
+    }
+    
+    public void Company.setRecomendacionUnderNoOpinion(Integer recomendacionUnderNoOpinion) {
+        this.recomendacionUnderNoOpinion = recomendacionUnderNoOpinion;
+    }
+    
     public Date Company.getFechaCreacion() {
         return this.fechaCreacion;
     }
@@ -94,10 +146,6 @@ privileged aspect Company_Roo_JavaBean {
     
     public String Company.getExchange() {
         return this.exchange;
-    }
-    
-    public String Company.getMarket() {
-        return this.market;
     }
     
     public String Company.getCompanyId() {

@@ -18,7 +18,7 @@ public class Processor implements Runnable{
 	String data;
 	Pattern forecast_porcentaje_pattern = Pattern.compile("-*\\d+(.)\\d*\\s*%");
 	Pattern forecast_valores_pattern = Pattern.compile("\\\"td\\\":\\s*\\[\\s*\\\"-*\\d+(.)\\d\\d\\\"\\,\\s*\\\"-*\\d+(.)\\d\\d\\\",\\s*\\\"-*\\d+(.)\\d\\d\\\"\\s*\\]");
-	Pattern precio_accion_pattern = Pattern.compile("\"content\":\\s*\"-*\\d+(.)\\d\\d\"");
+	Pattern precio_accion_pattern = Pattern.compile("\\\"content\\\":\\s*\"-*\\d+(.)\\d\\d\"");
 	Pattern volumen_negociado = Pattern.compile("volume_magnitude\",\\s*\\\"content\\\":\\s*\\\"\\d+(.)\\d\\d[mkb]\\\"\\s*}");
 	/*
 	Pattern recomendacion_outperform = Pattern.compile("Outperform\\\"\\s*},"
@@ -48,8 +48,8 @@ public class Processor implements Runnable{
 	private void extract_precio_accion(){
 		Matcher m = precio_accion_pattern.matcher(data);
 		
-		int start=0;
-		int end=0;
+		int start=m.start();
+		int end=m.end();
 		
 		String precio = data.substring(start, end);
 		precio.length();
@@ -128,7 +128,7 @@ public class Processor implements Runnable{
 	public void run() {
 		try {
 			
-			final String precioAccion = "//div[@class=\"contains wsodModuleContent\"]/table/tbody/tr/td[1]/span'"; 
+			final String precioAccion = "//div[@class=\"contains wsodModuleContent\"]/table/tbody/tr/td[1]/span"; 
 			final String porcentajeForecast = "//table[@class=\"fright\"]/tbody/tr/td[2]/span";
 			final String valoresForecast = "//table[@class=\"fright\"]/tbody/tr/td[3]";
 			
@@ -137,7 +137,7 @@ public class Processor implements Runnable{
 			String baseUrl = "http://query.yahooapis.com/v1/public/yql?q=";
 			
 			final String financialTimes = "http://markets.ft.com/research/Markets/Tearsheets/Forecasts?s="+this.company.getTicker()+":"+this.company.getMarket();
-			final String yql ="select * from html where url='"+financialTimes+"' "+"and xpath='"+porcentajeForecast+"'"; 
+			final String yql ="select * from html where url='"+financialTimes+"' "+"and xpath='"+porcentajeForecast+"|"+precioAccion+"'"; 
 			
 			
 			final String fullUrlStr = baseUrl + URLEncoder.encode(yql, "UTF-8") + "&format=json";

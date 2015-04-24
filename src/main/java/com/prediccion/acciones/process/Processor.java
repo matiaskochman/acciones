@@ -19,6 +19,22 @@ public class Processor implements Runnable{
 	Pattern forecast_porcentaje_pattern = Pattern.compile("-*\\d+(.)\\d*\\s*%");
 	Pattern forecast_valores_pattern = Pattern.compile("\\\"td\\\":\\s*\\[\\s*\\\"-*\\d+(.)\\d\\d\\\"\\,\\s*\\\"-*\\d+(.)\\d\\d\\\",\\s*\\\"-*\\d+(.)\\d\\d\\\"\\s*\\]");
 	Pattern precio_accion_pattern = Pattern.compile("\"content\":\\s*\"-*\\d+(.)\\d\\d\"");
+	Pattern volumen_negociado = Pattern.compile("volume_magnitude\",\\s*\\\"content\\\":\\s*\\\"\\d+(.)\\d\\d[mkb]\\\"\\s*}");
+	Pattern recomendacion_outperform = Pattern.compile("Outperform\\\"\\s*},"
+			+ "\\s*{\\s*\\\"class\\\"..........\\s*...........................\\s*"
+			+ "\\\"content\\\":\\s*\\\"\\d+\\\"");
+
+	Pattern recomendacion_buy = Pattern.compile("Buy\\\"\\s*},\\s*{\\s*\\\"class\\\":"
+			+ "\\s*\\\"value\\\",\\s*\\\"content\\\":\\s*\\\"\\d+\\\"");
+	
+	Pattern recomendacion_hold = Pattern.compile("Hold\\\"\\s*},\\s*{\\s*\\\"class\\\":"
+			+ "\\s*\\\"value\\\",\\s*\\\"content\\\":\\s*\\\"\\d+\\\"");
+
+	Pattern recomendacion_sell = Pattern.compile("Underperform\\\"\\s*},\\s*{\\s*\\\"class\\\":"
+			+ "\\s*\\\"value\\\",\\s*\\\"content\\\":\\s*\\\"\\d+\\\"");
+
+	Pattern recomendacion_no_opinion = Pattern.compile("No opinion\\\"\\s*},\\s*{\\s*\\\"class\\\":"
+			+ "\\s*\\\"value\\\",\\s*\\\"content\\\":\\s*\\\"\\d+\\\"");
 	
 	TreeSet<Company> treeSet;
 
@@ -120,7 +136,7 @@ public class Processor implements Runnable{
 			data = HttpConectionUtils.getData(fullUrlStr);
 			
 			extract_forecast_porcentaje();
-			 
+			extract_precio_accion();
 			 
 			System.out.println("equity symbol: "+company.getTicker()+":"+company.getMarket()+"   "+data);
 			System.out.println(countDownLatch.getCount());
@@ -148,5 +164,16 @@ public class Processor implements Runnable{
 		
 		
 		System.out.println("Finished");
+	}
+
+	private void extract_precio_accion() {
+		Matcher m = precio_accion_pattern.matcher(data);
+		 int start1 = 0;
+		 int end1 = 0;
+		 
+		 if(m.find()){
+			 
+		 }
+		
 	}	
 }

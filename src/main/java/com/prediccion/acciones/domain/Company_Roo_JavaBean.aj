@@ -24,28 +24,44 @@ privileged aspect Company_Roo_JavaBean {
         this.ticker = ticker;
     }
     
-    public Double Company.getMaxForecastValue() {
-        return this.maxForecastValue;
+    public Double Company.getStockValue() {
+        return this.stockValue;
     }
     
-    public void Company.setMaxForecastValue(Double maxForecastValue) {
-        this.maxForecastValue = maxForecastValue;
+    public void Company.setStockValue(Double stockValue) {
+        this.stockValue = stockValue;
     }
     
-    public Double Company.getMedForecastValue() {
-        return this.medForecastValue;
+    public Double Company.getVolumenNegociadoAyer() {
+        return this.volumenNegociadoAyer;
     }
     
-    public void Company.setMedForecastValue(Double medForecastValue) {
-        this.medForecastValue = medForecastValue;
+    public void Company.setVolumenNegociadoAyer(Double volumenNegociadoAyer) {
+        this.volumenNegociadoAyer = volumenNegociadoAyer;
     }
     
-    public Double Company.getMinForecastValue() {
-        return this.minForecastValue;
+    public Double Company.getMaxForecastPercentageValue() {
+        return this.maxForecastPercentageValue;
     }
     
-    public void Company.setMinForecastValue(Double minForecastValue) {
-        this.minForecastValue = minForecastValue;
+    public void Company.setMaxForecastPercentageValue(Double maxForecastPercentageValue) {
+        this.maxForecastPercentageValue = maxForecastPercentageValue;
+    }
+    
+    public Double Company.getMedForecastPercentageValue() {
+        return this.medForecastPercentageValue;
+    }
+    
+    public void Company.setMedForecastPercentageValue(Double medForecastPercentageValue) {
+        this.medForecastPercentageValue = medForecastPercentageValue;
+    }
+    
+    public Double Company.getMinForecastPercentageValue() {
+        return this.minForecastPercentageValue;
+    }
+    
+    public void Company.setMinForecastPercentageValue(Double minForecastPercentageValue) {
+        this.minForecastPercentageValue = minForecastPercentageValue;
     }
     
     public Double Company.getPrice52WeekPercChange() {

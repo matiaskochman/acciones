@@ -20,20 +20,20 @@ public class Processor implements Runnable{
 	Pattern forecast_valores_pattern = Pattern.compile("\\\"td\\\":\\s*\\[\\s*\\\"-*\\d+(.)\\d\\d\\\"\\,\\s*\\\"-*\\d+(.)\\d\\d\\\",\\s*\\\"-*\\d+(.)\\d\\d\\\"\\s*\\]");
 	Pattern precio_accion_pattern = Pattern.compile("\"content\":\\s*\"-*\\d+(.)\\d\\d\"");
 	Pattern volumen_negociado = Pattern.compile("volume_magnitude\",\\s*\\\"content\\\":\\s*\\\"\\d+(.)\\d\\d[mkb]\\\"\\s*}");
+	/*
 	Pattern recomendacion_outperform = Pattern.compile("Outperform\\\"\\s*},"
 			+ "\\s*{\\s*\\\"class\\\"..........\\s*...........................\\s*"
 			+ "\\\"content\\\":\\s*\\\"\\d+\\\"");
-
-	Pattern recomendacion_buy = Pattern.compile("Buy\\\"\\s*},\\s*{\\s*\\\"class\\\":"
-			+ "\\s*\\\"value\\\",\\s*\\\"content\\\":\\s*\\\"\\d+\\\"");
+*/
+	Pattern recomendacion_buy = Pattern.compile("Buy\\\"\\s*},\\s*.\\s*\\\"class\\\":\\s*\\\"value\\\",\\s*\\\"content\\\":\\s*\\\"\\d+\\\"");
 	
-	Pattern recomendacion_hold = Pattern.compile("Hold\\\"\\s*},\\s*{\\s*\\\"class\\\":"
+	Pattern recomendacion_hold = Pattern.compile("Hold\\\"\\s*},\\s*.\\s*\\\"class\\\":"
 			+ "\\s*\\\"value\\\",\\s*\\\"content\\\":\\s*\\\"\\d+\\\"");
 
-	Pattern recomendacion_sell = Pattern.compile("Underperform\\\"\\s*},\\s*{\\s*\\\"class\\\":"
+	Pattern recomendacion_sell = Pattern.compile("Underperform\\\"\\s*},\\s*.\\s*\\\"class\\\":"
 			+ "\\s*\\\"value\\\",\\s*\\\"content\\\":\\s*\\\"\\d+\\\"");
 
-	Pattern recomendacion_no_opinion = Pattern.compile("No opinion\\\"\\s*},\\s*{\\s*\\\"class\\\":"
+	Pattern recomendacion_no_opinion = Pattern.compile("No opinion\\\"\\s*},\\s*.\\s*\\\"class\\\":"
 			+ "\\s*\\\"value\\\",\\s*\\\"content\\\":\\s*\\\"\\d+\\\"");
 	
 	TreeSet<Company> treeSet;
@@ -45,6 +45,8 @@ public class Processor implements Runnable{
 		this.treeSet = set;
 	}
 
+	
+	
 	private void extract_forecast_porcentaje() throws Exception {
 		Matcher m = forecast_porcentaje_pattern.matcher(data);
 		 int start1 = 0;
@@ -97,12 +99,12 @@ public class Processor implements Runnable{
 				 System.out.println("mal parseado: "+data);
 			 }
 			 
-			 this.company.setMaxForecastValue(new Double(val1)) ;
-			 this.company.setMedForecastValue(new Double(val2));
-			 this.company.setMinForecastValue(new Double(val3));
+			 this.company.setMaxForecastPercentageValue(new Double(val1)) ;
+			 this.company.setMedForecastPercentageValue(new Double(val2));
+			 this.company.setMinForecastPercentageValue(new Double(val3));
 			 
-			 if(company.getMaxForecastValue()!=null||company.getMinForecastValue()!=null||company.getMedForecastValue()!=null){
-				 if(company.getMaxForecastValue().equals(company.getMinForecastValue())&&company.getMaxForecastValue().equals(company.getMedForecastValue())){
+			 if(company.getMaxForecastPercentageValue()!=null||company.getMinForecastPercentageValue()!=null||company.getMedForecastPercentageValue()!=null){
+				 if(company.getMaxForecastPercentageValue().equals(company.getMinForecastPercentageValue())&&company.getMaxForecastPercentageValue().equals(company.getMedForecastPercentageValue())){
 					throw new Exception("3 values are equal"); 
 				 }
 				 

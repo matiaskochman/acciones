@@ -9,12 +9,14 @@
         <field:input field="companyId" id="c_com_prediccion_acciones_domain_Company_companyId" z="iuVSUkLyjY/bkFTCSDGqK7F34zA="/>
         <field:input field="localCurrencySymbol" id="c_com_prediccion_acciones_domain_Company_localCurrencySymbol" z="vJJNyxkntHGZZTESgLZ4solgXOs="/>
         <field:input field="market" id="c_com_prediccion_acciones_domain_Company_market" required="true" z="hE9wjHk2r8uyMG0atoBGyPvdUCM="/>
-        <field:input field="maxForecastValue" id="c_com_prediccion_acciones_domain_Company_maxForecastValue" validationMessageCode="field_invalid_number" z="V3aYsofy7xEEPdjYlZlou/SXUqw="/>
-        <field:input field="medForecastValue" id="c_com_prediccion_acciones_domain_Company_medForecastValue" validationMessageCode="field_invalid_number" z="hjUiatSZGUCa1Ifi4KiDfItshB0="/>
-        <field:input field="minForecastValue" id="c_com_prediccion_acciones_domain_Company_minForecastValue" validationMessageCode="field_invalid_number" z="uLafbFRcULgpZjQQQnNAgGXgDAQ="/>
         <field:input field="marketCap" id="c_com_prediccion_acciones_domain_Company_marketCap" validationMessageCode="field_invalid_number" z="TfMXTfjLTCwXE3dGcE4d4WEq5pQ="/>
         <field:input field="pe" id="c_com_prediccion_acciones_domain_Company_pe" validationMessageCode="field_invalid_number" z="9Fx3clvYDaNe/N63/OF6cu0kYEw="/>
         <field:input field="price52WeekPercChange" id="c_com_prediccion_acciones_domain_Company_price52WeekPercChange" validationMessageCode="field_invalid_number" z="DuchbrZ8hT+XGPT8BfXLoyxDxO8="/>
         <field:datetime dateTimePattern="${company_fechacreacion_date_format}" field="fechaCreacion" id="c_com_prediccion_acciones_domain_Company_fechaCreacion" z="D9b3lyVnKMjUyB125S2CXY8gkNE="/>
+        <field:input field="stockValue" id="c_com_prediccion_acciones_domain_Company_stockValue" validationMessageCode="field_invalid_number" z="X3lYKGlfXCsq9iZtI6C9+WKEOj8="/>
+        <field:input field="volumenNegociadoAyer" id="c_com_prediccion_acciones_domain_Company_volumenNegociadoAyer" validationMessageCode="field_invalid_number" z="ugwJuq8+EoutqM6ovCh9FHmusSk="/>
+        <field:input field="maxForecastPercentageValue" id="c_com_prediccion_acciones_domain_Company_maxForecastPercentageValue" validationMessageCode="field_invalid_number" z="K1rfLOfzilZfKVm+ship5TChePc="/>
+        <field:input field="medForecastPercentageValue" id="c_com_prediccion_acciones_domain_Company_medForecastPercentageValue" validationMessageCode="field_invalid_number" z="gVWa4S4k/JecPt8hZIF4/xkDJaQ="/>
+        <field:input field="minForecastPercentageValue" id="c_com_prediccion_acciones_domain_Company_minForecastPercentageValue" validationMessageCode="field_invalid_number" z="+6Qi9r3ur/gAluLRZOtHGlmAph0="/>
     </form:update>
 </div>

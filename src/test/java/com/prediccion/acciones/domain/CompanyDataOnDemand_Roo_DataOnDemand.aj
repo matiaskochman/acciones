@@ -38,13 +38,15 @@ privileged aspect CompanyDataOnDemand_Roo_DataOnDemand {
         setLocalCurrencySymbol(obj, index);
         setMarket(obj, index);
         setMarketCap(obj, index);
-        setMaxForecastValue(obj, index);
-        setMedForecastValue(obj, index);
-        setMinForecastValue(obj, index);
+        setMaxForecastPercentageValue(obj, index);
+        setMedForecastPercentageValue(obj, index);
+        setMinForecastPercentageValue(obj, index);
         setPe(obj, index);
         setPrice52WeekPercChange(obj, index);
+        setStockValue(obj, index);
         setTicker(obj, index);
         setTitle(obj, index);
+        setVolumenNegociadoAyer(obj, index);
         return obj;
     }
     
@@ -78,19 +80,19 @@ privileged aspect CompanyDataOnDemand_Roo_DataOnDemand {
         obj.setMarketCap(marketCap);
     }
     
-    public void CompanyDataOnDemand.setMaxForecastValue(Company obj, int index) {
-        Double maxForecastValue = new Integer(index).doubleValue();
-        obj.setMaxForecastValue(maxForecastValue);
+    public void CompanyDataOnDemand.setMaxForecastPercentageValue(Company obj, int index) {
+        Double maxForecastPercentageValue = new Integer(index).doubleValue();
+        obj.setMaxForecastPercentageValue(maxForecastPercentageValue);
     }
     
-    public void CompanyDataOnDemand.setMedForecastValue(Company obj, int index) {
-        Double medForecastValue = new Integer(index).doubleValue();
-        obj.setMedForecastValue(medForecastValue);
+    public void CompanyDataOnDemand.setMedForecastPercentageValue(Company obj, int index) {
+        Double medForecastPercentageValue = new Integer(index).doubleValue();
+        obj.setMedForecastPercentageValue(medForecastPercentageValue);
     }
     
-    public void CompanyDataOnDemand.setMinForecastValue(Company obj, int index) {
-        Double minForecastValue = new Integer(index).doubleValue();
-        obj.setMinForecastValue(minForecastValue);
+    public void CompanyDataOnDemand.setMinForecastPercentageValue(Company obj, int index) {
+        Double minForecastPercentageValue = new Integer(index).doubleValue();
+        obj.setMinForecastPercentageValue(minForecastPercentageValue);
     }
     
     public void CompanyDataOnDemand.setPe(Company obj, int index) {
@@ -103,6 +105,11 @@ privileged aspect CompanyDataOnDemand_Roo_DataOnDemand {
         obj.setPrice52WeekPercChange(price52WeekPercChange);
     }
     
+    public void CompanyDataOnDemand.setStockValue(Company obj, int index) {
+        Double stockValue = new Integer(index).doubleValue();
+        obj.setStockValue(stockValue);
+    }
+    
     public void CompanyDataOnDemand.setTicker(Company obj, int index) {
         String ticker = "ticker_" + index;
         obj.setTicker(ticker);
@@ -111,6 +118,11 @@ privileged aspect CompanyDataOnDemand_Roo_DataOnDemand {
     public void CompanyDataOnDemand.setTitle(Company obj, int index) {
         String title = "title_" + index;
         obj.setTitle(title);
+    }
+    
+    public void CompanyDataOnDemand.setVolumenNegociadoAyer(Company obj, int index) {
+        Double volumenNegociadoAyer = new Integer(index).doubleValue();
+        obj.setVolumenNegociadoAyer(volumenNegociadoAyer);
     }
     
     public Company CompanyDataOnDemand.getSpecificCompany(int index) {

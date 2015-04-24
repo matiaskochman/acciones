@@ -107,7 +107,7 @@ public class ParsingServiceImpl implements ParsingService{
 		Comparator<Company> minComparator = new Comparator<Company>(){
 			@Override
 			public int compare(Company o1, Company o2) {
-				int min = o1.getMinForecastValue().compareTo(o2.getMinForecastValue());
+				int min = o1.getMinForecastPercentageValue().compareTo(o2.getMinForecastPercentageValue());
 				return min*(-1);
 			}
 		};		    

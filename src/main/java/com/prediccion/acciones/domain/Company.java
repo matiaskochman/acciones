@@ -49,11 +49,17 @@ public class Company {
     private String ticker;
 
     @Column
-    private Double maxForecastValue;
+    private Double stockValue;
+
     @Column
-    private Double medForecastValue;
+    private Double volumenNegociadoAyer;
+    
     @Column
-    private Double minForecastValue;
+    private Double maxForecastPercentageValue;
+    @Column
+    private Double medForecastPercentageValue;
+    @Column
+    private Double minForecastPercentageValue;
     
     @Column
     private Double price52WeekPercChange;
@@ -104,9 +110,9 @@ public class Company {
 	@Override
 	public String toString() {
 		return "Company [ ticker=" + ticker+ "  , market=" + market
-				+ "  , maxForecastValue=" + maxForecastValue
-				+ "  , medForecastValue=" + medForecastValue
-				+ "  , minForecastValue=" + minForecastValue
+				+ "  , maxForecastValue=" + maxForecastPercentageValue
+				+ "  , medForecastValue=" + medForecastPercentageValue
+				+ "  , minForecastValue=" + minForecastPercentageValue
 				+ "  , price52WeekPercChange=" + price52WeekPercChange
 				+ "  , marketCap="
 				+ marketCap  +  ", title=" + title + "]";

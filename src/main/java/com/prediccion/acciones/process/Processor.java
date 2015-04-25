@@ -11,20 +11,18 @@ import com.prediccion.acciones.utils.HttpConectionUtils;
 
 public class Processor implements Runnable{
 	
-	//Integer CONCURRENT_THREADS = 20;
-	
 	CountDownLatch countDownLatch;
 	Company company;
 	String data;
 	Pattern forecast_porcentaje_pattern = Pattern.compile("-*\\d+(.)\\d*\\s*%");
 	Pattern forecast_valores_pattern = Pattern.compile("\\\"td\\\":\\s*\\[\\s*\\\"-*\\d+(.)\\d\\d\\\"\\,\\s*\\\"-*\\d+(.)\\d\\d\\\",\\s*\\\"-*\\d+(.)\\d\\d\\\"\\s*\\]");
-	//Pattern precio_accion_pattern = Pattern.compile("\\\"content\\\":\\s*\\\"-*\\d+(.)\\d\\d\\\"");
 	Pattern precio_accion_pattern = Pattern.compile("results\\\":\\{\\\"span\\\":\\[\\\"\\d+(.)\\d+");
 	
 	Pattern volumen_negociado = Pattern.compile("volume_magnitude\",\\s*\\\"content\\\":\\s*\\\"\\d+(.)\\d\\d[mkb]\\\"\\s*}");
 	
 	
 	final String common = "\\\"}..\\\"class\\\":\\\"value\\\",((\\\"style\\\":\\\"color:.........\\\",\\\"content\\\":\\\"\\d+)|(\\\"content\\\":\\\"\\d+))";
+	
 	Pattern recomendacion_buy = Pattern.compile("Buy"+common);
 	Pattern recomendacion_outperform = Pattern.compile("Outperform"+common);
 	Pattern recomendacion_hold = Pattern.compile("Hold"+common);
@@ -63,40 +61,6 @@ public class Processor implements Runnable{
 	}
 	
 	
-	private void extract_recomendacion_outperform(Pattern p){
-		Matcher m = recomendacion_outperform.matcher(data);
-		if(m.find()){
-			int start=m.start();
-			int end=m.end();
-			String precio = data.substring(start, end);
-			Pattern valor = Pattern.compile("\\d");
-			Matcher m_recomendacion_outperform = valor.matcher(precio);
-			if(m_recomendacion_outperform.find()){
-				String valor1 = precio.substring(m_recomendacion_outperform.start(), m_recomendacion_outperform.end());
-				 this.company.setRecomendacionOutPerform(new Integer(valor1)) ;
-			}
-		}else {
-			System.out.println("yql extract -- la accion no tiene precio");
-		}
-	}
-	/*
-	*/
-	private void extract_recomendacion_buy(){
-		Matcher m = recomendacion_buy.matcher(data);
-		if(m.find()){
-			int start=m.start();
-			int end=m.end();
-			String precio = data.substring(start, end);
-			Pattern valor = Pattern.compile("\\d");
-			Matcher m_recomendacion_buy = valor.matcher(precio);
-			if(m_recomendacion_buy.find()){
-				String valor_precio_accion = precio.substring(m_recomendacion_buy.start(), m_recomendacion_buy.end());
-				 this.company.setRecomendacionBuy(new Integer(valor_precio_accion)) ;
-			}
-		}else {
-			System.out.println("yql extract -- la accion no tiene precio");
-		}
-	}
 	
 	private Double extract_precio_accion(Pattern p){
 		Matcher m = p.matcher(data);
@@ -210,15 +174,11 @@ public class Processor implements Runnable{
 			extract_forecast_porcentaje();
 			company.setStockValue(extract_precio_accion(precio_accion_pattern));
 			
-			//extract_recomendacion_buy();
-			//extract_recomendacion_outperform();
-			
 			company.setRecomendacionBuy(extract_recomendacion(recomendacion_buy));
 			company.setRecomendacionOutPerform(extract_recomendacion(recomendacion_outperform));
 			company.setRecomendacionHold(extract_recomendacion(recomendacion_hold));
 			company.setRecomendacionUnderPerform(extract_recomendacion(recomendacion_underperform));
 			company.setRecomendacionSell(extract_recomendacion(recomendacion_sell));
-			
 			company.setRecomendacionNoOpinion(extract_recomendacion(recomendacion_no_opinion));
 			
 			System.out.println("equity symbol: "+company.getTicker()+":"+company.getMarket()+"   "+data);

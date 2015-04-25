@@ -19,7 +19,7 @@ public class ParsingServiceTest extends AbstractJUnit4SpringContextTests{
     public void test(){
     	
 		String s = "https://www.google.com/finance?output=json&start=0&"
-				+ "num=100&noIL=1&q=[%28"
+				+ "num=1500&noIL=1&q=[%28"
 				+ "exchange%20%3D%3D%20%22EPA%22%29%20%26%20%28"
 				+ "market_cap%20%3E%3D%200%29%20%26%20%28"
 				+ "market_cap%20%3C%3D%20127180000000%29%20%26%20%28"
@@ -30,7 +30,7 @@ public class ParsingServiceTest extends AbstractJUnit4SpringContextTests{
 				+ "price_change_52week%20%3E%3D%20-84%29%20%26%20%28"
 				+ "price_change_52week%20%3C%3D%201010%29]&restype=company&ei=jfs2VZHuH-zwsQfMhoCAAw&sortas=MarketCap";
 
-		String maxNumEmpresas = "200";
+		String maxNumEmpresas = "2000";
 		String price_change_52week_from = "-90";
 		String marketCap_from = "1000000";
 		String nasdaq = "exchange%20%3D%3D%20%22NASDAQ%22%29%29%20%26%20%28";
@@ -69,8 +69,9 @@ public class ParsingServiceTest extends AbstractJUnit4SpringContextTests{
     	Set<Company> list2 = parsingService.getSocksFromGoogleFinance(query);
 
     	list.addAll(list2);
+    	Integer count =0 ;
     	for (Company company : list) {
-			System.out.println(company);
+			System.out.println(++count +" "+company);
 		}
     	
     }

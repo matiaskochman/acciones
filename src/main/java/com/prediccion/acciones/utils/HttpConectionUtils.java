@@ -14,8 +14,9 @@ public class HttpConectionUtils {
 	
 	public static String getData(String address) throws Exception {
 		
-		Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.18.3.100", 8080));
-		HttpURLConnection conn = (HttpURLConnection) new URL(address).openConnection(proxy);
+		//Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("172.18.3.100", 8080));
+		//HttpURLConnection conn = (HttpURLConnection) new URL(address).openConnection(proxy);
+		HttpURLConnection conn = (HttpURLConnection) new URL(address).openConnection();
 		conn.setConnectTimeout(10000);
 		  
 	    URL url = new URL(address);

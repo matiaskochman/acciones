@@ -22,7 +22,7 @@
         <field:display field="recomendacionOutPerform" id="s_com_prediccion_acciones_domain_Company_recomendacionOutPerform" object="${company}" z="WwpP6hqTDOoiszc2ud8tTO7Q3is="/>
         <field:display field="recomendacionHold" id="s_com_prediccion_acciones_domain_Company_recomendacionHold" object="${company}" z="cEivFSX6xEY0eTi20BN5Q6IjBrU="/>
         <field:display field="recomendacionUnderPerform" id="s_com_prediccion_acciones_domain_Company_recomendacionUnderPerform" object="${company}" z="P7ParH3ufPn3/oPW7YQJJdKrwjk="/>
-        <field:display field="recomendacionUnderSell" id="s_com_prediccion_acciones_domain_Company_recomendacionUnderSell" object="${company}" z="NvChDBu3PTpOZhMNOrZy6H4OaRE="/>
-        <field:display field="recomendacionUnderNoOpinion" id="s_com_prediccion_acciones_domain_Company_recomendacionUnderNoOpinion" object="${company}" z="3uoBuqmBUstOWeixQvFBX9TG5zk="/>
+        <field:display field="recomendacionSell" id="s_com_prediccion_acciones_domain_Company_recomendacionSell" object="${company}" z="B8HC/JW7dea6HJmqCf3iyDOk+OU="/>
+        <field:display field="recomendacionNoOpinion" id="s_com_prediccion_acciones_domain_Company_recomendacionNoOpinion" object="${company}" z="cKXA2BsRLaxHqCu9ibYxlXln6P8="/>
     </page:show>
 </div>

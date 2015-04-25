@@ -24,7 +24,7 @@ import com.prediccion.acciones.utils.HttpConectionUtils;
 @Transactional
 public class ParsingServiceImpl implements ParsingService{
 
-	int CONCURRENT_THREADS = 5;
+	int CONCURRENT_THREADS = 40;
 	
 	public List<Company> createCompanies(CompanyJson[] companyArray){
 		List<Company> list = new ArrayList<Company>();
@@ -90,7 +90,7 @@ public class ParsingServiceImpl implements ParsingService{
 
 		try {
 			
-			Pattern p = Pattern.compile("\\[\\{(\"title\")+[\\x00-\\x7F]+(?=\\,\\\"mf_searchresults)");
+			//Pattern p = Pattern.compile("\\[\\{(\"title\")+[\\x00-\\x7F]+(?=\\,\\\"mf_searchresults)");
 			Pattern p_european = Pattern.compile("\\[\\{\"title\"+[\\x00-\\x7F|€|£]+(?=\\,\\\"mf_searchresults)");
 			
 			result = HttpConectionUtils.getData(query);
@@ -120,14 +120,12 @@ public class ParsingServiceImpl implements ParsingService{
 			try {
 				countDownLatch.await();
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 			executorService.shutdown();
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

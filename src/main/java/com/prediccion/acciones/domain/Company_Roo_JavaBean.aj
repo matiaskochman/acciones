@@ -36,14 +36,6 @@ privileged aspect Company_Roo_JavaBean {
         this.stockValue = stockValue;
     }
     
-    public Double Company.getVolumenNegociadoAyer() {
-        return this.volumenNegociadoAyer;
-    }
-    
-    public void Company.setVolumenNegociadoAyer(Double volumenNegociadoAyer) {
-        this.volumenNegociadoAyer = volumenNegociadoAyer;
-    }
-    
     public Double Company.getMaxForecastPercentageValue() {
         return this.maxForecastPercentageValue;
     }
@@ -108,20 +100,28 @@ privileged aspect Company_Roo_JavaBean {
         this.recomendacionUnderPerform = recomendacionUnderPerform;
     }
     
-    public Integer Company.getRecomendacionUnderSell() {
-        return this.recomendacionUnderSell;
+    public Integer Company.getRecomendacionSell() {
+        return this.recomendacionSell;
     }
     
-    public void Company.setRecomendacionUnderSell(Integer recomendacionUnderSell) {
-        this.recomendacionUnderSell = recomendacionUnderSell;
+    public void Company.setRecomendacionSell(Integer recomendacionSell) {
+        this.recomendacionSell = recomendacionSell;
     }
     
-    public Integer Company.getRecomendacionUnderNoOpinion() {
-        return this.recomendacionUnderNoOpinion;
+    public Integer Company.getRecomendacionNoOpinion() {
+        return this.recomendacionNoOpinion;
     }
     
-    public void Company.setRecomendacionUnderNoOpinion(Integer recomendacionUnderNoOpinion) {
-        this.recomendacionUnderNoOpinion = recomendacionUnderNoOpinion;
+    public void Company.setRecomendacionNoOpinion(Integer recomendacionNoOpinion) {
+        this.recomendacionNoOpinion = recomendacionNoOpinion;
+    }
+    
+    public Double Company.getVolumenNegociadoAyer() {
+        return this.volumenNegociadoAyer;
+    }
+    
+    public void Company.setVolumenNegociadoAyer(Double volumenNegociadoAyer) {
+        this.volumenNegociadoAyer = volumenNegociadoAyer;
     }
     
     public Date Company.getFechaCreacion() {

@@ -22,8 +22,8 @@
         <field:input field="recomendacionOutPerform" id="c_com_prediccion_acciones_domain_Company_recomendacionOutPerform" validationMessageCode="field_invalid_integer" z="eaidqaXF+IGwLs7sqPeYn6q3qXM="/>
         <field:input field="recomendacionHold" id="c_com_prediccion_acciones_domain_Company_recomendacionHold" validationMessageCode="field_invalid_integer" z="K3b9Ipawu8Bd4rRUGjLt1e0SS6s="/>
         <field:input field="recomendacionUnderPerform" id="c_com_prediccion_acciones_domain_Company_recomendacionUnderPerform" validationMessageCode="field_invalid_integer" z="O0vrUlwd34n3KlBrZ1Yk7i1HIuE="/>
-        <field:input field="recomendacionUnderSell" id="c_com_prediccion_acciones_domain_Company_recomendacionUnderSell" validationMessageCode="field_invalid_integer" z="i/hxNNCoT3xCDRYFi9/EU7EJ7Ms="/>
-        <field:input field="recomendacionUnderNoOpinion" id="c_com_prediccion_acciones_domain_Company_recomendacionUnderNoOpinion" validationMessageCode="field_invalid_integer" z="amef5ot6TeynXy+TiIA8UnnVlF8="/>
+        <field:input field="recomendacionSell" id="c_com_prediccion_acciones_domain_Company_recomendacionSell" validationMessageCode="field_invalid_integer" z="WF4PQz9GhqKlYU8ak/SNmEDCHQs="/>
+        <field:input field="recomendacionNoOpinion" id="c_com_prediccion_acciones_domain_Company_recomendacionNoOpinion" validationMessageCode="field_invalid_integer" z="uSjlw9iSF1ulA16G8XjG+DSXO2o="/>
     </form:create>
     <form:dependency dependencies="${dependencies}" id="d_com_prediccion_acciones_domain_Company" render="${not empty dependencies}" z="1HM9kqb281OwQccFw0Qo49aZxL4="/>
 </div>

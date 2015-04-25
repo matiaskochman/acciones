@@ -53,8 +53,6 @@ public class Company {
     @Column
     private Double stockValue;
 
-    @Column
-    private Double volumenNegociadoAyer;
     
     @Column
     private Double maxForecastPercentageValue;
@@ -62,10 +60,8 @@ public class Company {
     private Double medForecastPercentageValue;
     @Column
     private Double minForecastPercentageValue;
-    
     @Column
     private Double price52WeekPercChange;
-    
     @Column
     private Integer recomendacionBuy;
     @Column
@@ -75,17 +71,16 @@ public class Company {
     @Column
     private Integer recomendacionUnderPerform;
     @Column
-    private Integer recomendacionUnderSell;
+    private Integer recomendacionSell;
     @Column
-    private Integer recomendacionUnderNoOpinion;
-    
+    private Integer recomendacionNoOpinion;
+    @Column
+    private Double volumenNegociadoAyer;
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date fechaCreacion;
-    
     @Column
     private Double marketCap;
-    
     @Column
     private Double pe;
     /**
@@ -172,13 +167,19 @@ public class Company {
 	@Override
 	public String toString() {
 		return "Company [ticker=" + ticker + ", market=" + market
-				+ ", stockValue=" + stockValue
-				+ ", maxForecastPercentageValue=" + maxForecastPercentageValue
-				+ ", medForecastPercentageValue=" + medForecastPercentageValue
-				+ ", minForecastPercentageValue=" + minForecastPercentageValue
-				+ ", price52WeekPercChange=" + price52WeekPercChange
-				+ ", recomendacionBuy=" + recomendacionBuy + "]";
+				+ ", price=" + stockValue
+				+ ", maxFPercVal=" + maxForecastPercentageValue
+				+ ", medFPercVal=" + medForecastPercentageValue
+				+ ", minFPercVal=" + minForecastPercentageValue
+				+ ", price52WkPerChange=" + price52WeekPercChange
+				+ ", recoBuy=" + recomendacionBuy
+				+ ", recoOutPerform=" + recomendacionOutPerform
+				+ ", recoHold=" + recomendacionHold
+				+ ", recoUnderPerform=" + recomendacionUnderPerform
+				+ ", recoSell=" + recomendacionSell
+				+ ", recoNoOpinion=" + recomendacionNoOpinion + "]";
 	}
+
 
 	
 }

@@ -171,15 +171,22 @@ public class Company {
 				+ ", maxFPercVal=" + maxForecastPercentageValue
 				+ ", medFPercVal=" + medForecastPercentageValue
 				+ ", minFPercVal=" + minForecastPercentageValue
+				+ ", opinionAvg= "+opinionAverage()
 				+ ", price52WkPerChange=" + price52WeekPercChange
-				+ ", recoBuy=" + recomendacionBuy
-				+ ", recoOutPerform=" + recomendacionOutPerform
-				+ ", recoHold=" + recomendacionHold
-				+ ", recoUnderPerform=" + recomendacionUnderPerform
-				+ ", recoSell=" + recomendacionSell
-				+ ", recoNoOpinion=" + recomendacionNoOpinion + "]";
+				+ ", Buy=" + recomendacionBuy
+				+ ", OutPerform=" + recomendacionOutPerform
+				+ ", Hold=" + recomendacionHold
+				+ ", UnderPerform=" + recomendacionUnderPerform
+				+ ", Sell=" + recomendacionSell
+				+ ", NoOpinion=" + recomendacionNoOpinion + "]";
 	}
 
 
+	public Integer opinionAverage(){
+		
+		Integer result = recomendacionOutPerform +recomendacionBuy*2 -recomendacionUnderPerform-recomendacionSell*2;
+		return result;
+		
+	}
 	
 }

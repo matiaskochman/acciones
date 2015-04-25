@@ -18,19 +18,43 @@ public class ParsingServiceTest extends AbstractJUnit4SpringContextTests{
     @Test
     public void test(){
     	
-		String s = "https://www.google.com/finance?output=json&start=0&"
-				+ "num=1500&noIL=1&q=[%28"
-				+ "exchange%20%3D%3D%20%22EPA%22%29%20%26%20%28"
+    	String london_stock_market = "exchange%20%3D%3D%20%22LON%22%29%20%26%20%28";
+    	String london_query = "https://www.google.com/finance?output=json&start=0&"
+    			+ "num=20"
+    			+ "&noIL=1&q=[%28"
+    			+ london_stock_market
+    			+ "market_cap%20%3E%3D%200%29%20%26%20%28"
+    			+ "market_cap%20%3C%3D%20221450000000%29%20%26%20%28"
+    			+ "pe_ratio%20%3E%3D%200%29%20%26%20%28"
+    			+ "pe_ratio%20%3C%3D%20250667%29%20%26%20%28"
+    			+ "dividend_yield%20%3E%3D%200%29%20%26%20%28"
+    			+ "dividend_yield%20%3C%3D%20141%29%20%26%20%28"
+    			+ "price_change_52week%20%3E%3D%20-98.33%29%20%26%20%28"
+    			+ "price_change_52week%20%3C%3D%20981%29"
+    			+ "]&restype=company&ei=0NA7VZHHLOuJsge4_YHQBw"
+    			+"&sortas=Price52WeekPercChange";
+    	
+    	
+		String paris_stock_market = "exchange%20%3D%3D%20%22EPA%22%29%20%26%20%28";
+		String paris_price_change_52weeks = "-84";
+    	
+    	
+		String paris_query = "https://www.google.com/finance?output=json&start=0&"
+				+ "num=100"
+				+ "&noIL=1&q=[%28"
+				+ paris_stock_market
 				+ "market_cap%20%3E%3D%200%29%20%26%20%28"
 				+ "market_cap%20%3C%3D%20127180000000%29%20%26%20%28"
 				+ "pe_ratio%20%3E%3D%200%29%20%26%20%28"
 				+ "pe_ratio%20%3C%3D%2010098%29%20%26%20%28"
 				+ "dividend_yield%20%3E%3D%200%29%20%26%20%28"
 				+ "dividend_yield%20%3C%3D%20171%29%20%26%20%28"
-				+ "price_change_52week%20%3E%3D%20-84%29%20%26%20%28"
-				+ "price_change_52week%20%3C%3D%201010%29]&restype=company&ei=jfs2VZHuH-zwsQfMhoCAAw&sortas=MarketCap";
+				+ "price_change_52week%20%3E%3D%20"+paris_price_change_52weeks+"%29%20%26%20%28"
+				+ "price_change_52week%20%3C%3D%201010%29]&restype=company&ei=jfs2VZHuH-zwsQfMhoCAAw&"+
+				"sortas=Price52WeekPercChange";
+				//"sortas=MarketCap";
 
-		String maxNumEmpresas = "2000";
+		String maxNumEmpresas = "20";
 		String price_change_52week_from = "-90";
 		String marketCap_from = "1000000";
 		String nasdaq = "exchange%20%3D%3D%20%22NASDAQ%22%29%29%20%26%20%28";
@@ -39,10 +63,9 @@ public class ParsingServiceTest extends AbstractJUnit4SpringContextTests{
 		String tcbb = "exchange%20%3D%3D%20%22OTCBB%22%29%20%7C%20%28";
 		String currency = "currency%20%3D%3D%20%22USD%22%20%26%20%28%28";
 		String nyseArca = "exchange%20%3D%3D%20%22NYSEARCA%22%29%20%7C%20%28";
-		String london = "%28exchange%20%3D%3D%20%22LON%22%29%20%26%20%28";
 		String otcmkt = "exchange%20%3D%3D%20%22OTCMKTS%22%29%20%7C%20%28";
 		
-		String query = "http://www.google.com/finance?"+
+		String us_query = "http://www.google.com/finance?"+
 						"output=json&start=0&num="+maxNumEmpresas+"&noIL=1&q=["+
 						currency+
 						otcmkt+
@@ -65,10 +88,13 @@ public class ParsingServiceTest extends AbstractJUnit4SpringContextTests{
 						//"&sortas=MarketCap";
 		
 		
-    	Set<Company> list = parsingService.getSocksFromGoogleFinance(s);
-    	Set<Company> list2 = parsingService.getSocksFromGoogleFinance(query);
+    	Set<Company> list = parsingService.getSocksFromGoogleFinance(paris_query);
+    	Set<Company> list2 = parsingService.getSocksFromGoogleFinance(us_query);
+    	Set<Company> list3 = parsingService.getSocksFromGoogleFinance(london_query);
 
     	list.addAll(list2);
+    	list.addAll(list3);
+    	
     	Integer count =0 ;
     	for (Company company : list) {
 			System.out.println(++count +" "+company);

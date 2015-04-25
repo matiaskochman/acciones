@@ -89,8 +89,6 @@ public class ParsingServiceImpl implements ParsingService{
 		TreeSet<Company> resultSet = new TreeSet<Company>(minComparator);
 
 		try {
-			
-			//Pattern p = Pattern.compile("\\[\\{(\"title\")+[\\x00-\\x7F]+(?=\\,\\\"mf_searchresults)");
 			Pattern p_european = Pattern.compile("\\[\\{\"title\"+[\\x00-\\x7F|€|£]+(?=\\,\\\"mf_searchresults)");
 			
 			result = HttpConectionUtils.getData(query);
@@ -137,6 +135,7 @@ public class ParsingServiceImpl implements ParsingService{
 	
 	
 }
+/*
 class Equity implements Comparable<Equity>{
 	String symbol;
 	String market;
@@ -197,6 +196,7 @@ class Equity implements Comparable<Equity>{
 	
 	
 }
+*/
 
 class CompanyJson {
 	
